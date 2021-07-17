@@ -17,8 +17,6 @@ import argparse
 import cv2
 
 
-
-
 save_gif = False
 
 if save_gif:
@@ -32,7 +30,7 @@ if save_gif:
 def plot_map(m, vehicle):
     import matplotlib.pyplot as plt
 
-    fig = plt.figure()
+    # fig = plt.figure()
 
     wp_list = m.generate_waypoints(2.0)
     loc_list = np.array(
@@ -43,12 +41,15 @@ def plot_map(m, vehicle):
     wp = m.get_waypoint(vehicle.get_transform().location)
     vehicle_loc = carla_vec_to_np_array(wp.transform.location)
     plt.scatter([vehicle_loc[0]], [vehicle_loc[1]])
-    plt.close()
+    # plt.close()
+    plt.show()
 
-    fig.canvas.draw()
-    img = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-    img = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
-    img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
+    # fig.canvas.draw()
+    # img = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
+    # img = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+    # img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
+    # plt.close()
+    # plt.pause(0.001)
     # cv2.imshow("Map", img)
 
 def get_trajectory_from_lane_detector(ld, image):
@@ -105,14 +106,13 @@ def send_control(vehicle, throttle, steer, brake,
 
 
 
-def main(use_lane_detector=False):
+def main(use_lane_detector=False, mapid=4):
     # Imports
     if use_lane_detector:
         from lane_detection.lane_detector import LaneDetector
         from lane_detection.camera_geometry import CameraGeometry
     
     from control.pure_pursuit import PurePursuitPlusPID
-
 
     actor_list = []
     pygame.init()
@@ -126,8 +126,7 @@ def main(use_lane_detector=False):
     client = carla.Client('localhost', 2000)
     client.set_timeout(40.0)
 
-    # client.load_world('Town02')
-    client.load_world('Town04')
+    client.load_world('Town0' + mapid)
     world = client.get_world()
     weather_presets = find_weather_presets()
     world.set_weather(weather_presets[3][0])
@@ -137,15 +136,26 @@ def main(use_lane_detector=False):
     try:
         m = world.get_map()
 
+        if mapid == 4:
+            spawn_id = 90
+        elif mapid == 5:
+            spawn_id = 80
+        elif mapid == 2:
+            spawn_id = 2
+        else:
+            spawn_id = 50
+
         blueprint_library = world.get_blueprint_library()
 
         veh_bp = random.choice(blueprint_library.filter('vehicle.audi.tt'))
         veh_bp.set_attribute('color','64,81,181')
         vehicle = world.spawn_actor(
             veh_bp,
-            m.get_spawn_points()[90])
+            m.get_spawn_points()[spawn_id])
         actor_list.append(vehicle)
 
+        startPoint = m.get_spawn_points()[spawn_id]
+        startPoint = carla_vec_to_np_array(startPoint.location)
 
         # visualization cam (no functionality)
         camera_rgb = world.spawn_actor(
@@ -154,13 +164,12 @@ def main(use_lane_detector=False):
             attach_to=vehicle)
         actor_list.append(camera_rgb)
         sensors = [camera_rgb]
-
         
         if use_lane_detector:
             cg = CameraGeometry()
            
             # Change model here
-            ld = LaneDetector(model_path=Path("lane_detection/best_model_multi_dice_loss.pth").absolute())
+            ld = LaneDetector(model_path=Path("lane_detection/best_model_multi_dice_loss-5.pth").absolute())
 
             #windshield cam
             cam_windshield_transform = carla.Transform(carla.Location(x=0.5, z=cg.height), carla.Rotation(pitch=-1*cg.pitch_deg))
@@ -176,13 +185,14 @@ def main(use_lane_detector=False):
             actor_list.append(camera_windshield)
             sensors.append(camera_windshield)
 
-
+        count = 0
+        flag = False
         frame = 0
         max_error = 0
         FPS = 15
         # Create a synchronous mode context.
         with CarlaSyncMode(world, *sensors, fps=FPS) as sync_mode:
-            while True:
+            while count < 2:
                 if should_quit():
                     return
                 clock.tick()          
@@ -223,14 +233,26 @@ def main(use_lane_detector=False):
                 cross_track_error = int(dist)
                 max_error = max(max_error, cross_track_error)
 
-                laneMessage = "No Lane Detected"
+                wp = m.get_waypoint(vehicle.get_transform().location)
+                vehicle_loc = carla_vec_to_np_array(wp.transform.location)
+
+                if np.linalg.norm(vehicle_loc-startPoint) > 5:
+                    flag = False
+
+                if np.linalg.norm(vehicle_loc-startPoint) < 5 and flag == False:
+                    flag = True
+                    count += 1
+                
+                # plot_map(m, vehicle)
 
                 if use_lane_detector:
                     fontText = cv2.FONT_HERSHEY_SIMPLEX
                     fontScale = 0.75
                     fontColor = (255,255,255)
                     lineType = 2
-
+                    laneMessage = "No Lane Detected"
+                    steerMessage = ""
+                    
                     if dist < 0.75:
                         laneMessage = "Lane Tracking: Good"
                     else:
@@ -241,7 +263,7 @@ def main(use_lane_detector=False):
                             fontText,
                             fontScale,
                             fontColor,
-                            lineType)
+                            lineType)             
 
                     if steer > 0:
                         steerMessage = "Right"
@@ -255,6 +277,15 @@ def main(use_lane_detector=False):
                             fontColor,
                             lineType)
 
+                    steerMessage = ""
+                    laneMessage = "No Lane Detected"
+
+                    cv2.putText(img, "X: {:.2f}, Y: {:.2f}".format((vehicle_loc[0]), vehicle_loc[1]),
+                                (20,50),
+                                fontText,
+                                0.5,
+                                fontColor,
+                                lineType)
 
                     cv2.imshow('Lane detect', img)
                     if cv2.waitKey(25) & 0xFF == ord('q'):
@@ -272,7 +303,7 @@ def main(use_lane_detector=False):
                     font.render('     speed: {:.2f} m/s'.format(speed), True, (255, 255, 255)),
                     (8, 46))
                 display.blit(
-                    font.render('     cross track error: {:03d} m'.format(cross_track_error), True, (255, 255, 255)),
+                    font.render('     cross track error: {:03d} m'.format(cross_track_error*100), True, (255, 255, 255)),
                     (8, 64))
                 display.blit(
                     font.render('     max cross track error: {:03d} m'.format(max_error), True, (255, 255, 255)),
@@ -302,10 +333,11 @@ def main(use_lane_detector=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Runs Carla simulation with your control algorithm.')
     parser.add_argument("--ld", action="store_true", help="Use reference trajectory from your LaneDetector class")
+    parser.add_argument("--mapid", default=4, help="Choose map from 1 to 5")
     args = parser.parse_args()
 
     try:
-        main(use_lane_detector = args.ld)
+        main(use_lane_detector = args.ld, mapid = args.mapid)
 
     except KeyboardInterrupt:
         print('\nCancelled by user. Bye!')

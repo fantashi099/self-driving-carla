@@ -9,15 +9,16 @@
 
 * Run carla first
 
+* List of maps: [1,2,3,4,5]
 
 If you use one version python:
 ```sh
-$ python carla_sim.py --ld
+$ python carla_sim.py --ld --mapid=4
 ```
 
 If you use multiple version python:
 ```sh
-$ py -3.7 -m carla_sim --ld
+$ py -3.7 -m carla_sim --ld --mapid=4
 ```
 
 
