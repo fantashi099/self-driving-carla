@@ -136,11 +136,11 @@ def main(use_lane_detector=False, mapid=4):
     try:
         m = world.get_map()
 
-        if mapid == 4:
+        if mapid == '4':
             spawn_id = 90
-        elif mapid == 5:
+        elif mapid == '5':
             spawn_id = 80
-        elif mapid == 2:
+        elif mapid == '2':
             spawn_id = 2
         else:
             spawn_id = 50
@@ -186,10 +186,13 @@ def main(use_lane_detector=False, mapid=4):
             sensors.append(camera_windshield)
 
         count = 0
-        flag = False
+        flag = True
         frame = 0
         max_error = 0
-        FPS = 15
+        FPS = 30
+        cross_track_list = []
+        fps_list = []
+
         # Create a synchronous mode context.
         with CarlaSyncMode(world, *sensors, fps=FPS) as sync_mode:
             while count < 2:
@@ -210,17 +213,17 @@ def main(use_lane_detector=False, mapid=4):
                     snapshot, image_rgb = tick_response
                     traj = get_trajectory_from_map(m, vehicle)
 
-                # get velocity and angular velocity
-                vel = carla_vec_to_np_array(vehicle.get_velocity())
-                forward = carla_vec_to_np_array(vehicle.get_transform().get_forward_vector())
-                right = carla_vec_to_np_array(vehicle.get_transform().get_right_vector())
-                up = carla_vec_to_np_array(vehicle.get_transform().get_up_vector())
-                vx = vel.dot(forward)
-                vy = vel.dot(right)
-                vz = vel.dot(up)
-                ang_vel = carla_vec_to_np_array(vehicle.get_angular_velocity())
-                w = ang_vel.dot(up)
-                # print("vx vy vz w {:.2f} {:.2f} {:.2f} {:.5f}".format(vx,vy,vz,w))
+                # # get velocity and angular velocity
+                # vel = carla_vec_to_np_array(vehicle.get_velocity())
+                # forward = carla_vec_to_np_array(vehicle.get_transform().get_forward_vector())
+                # right = carla_vec_to_np_array(vehicle.get_transform().get_right_vector())
+                # up = carla_vec_to_np_array(vehicle.get_transform().get_up_vector())
+                # vx = vel.dot(forward)
+                # vy = vel.dot(right)
+                # vz = vel.dot(up)
+                # ang_vel = carla_vec_to_np_array(vehicle.get_angular_velocity())
+                # w = ang_vel.dot(up)
+                # # print("vx vy vz w {:.2f} {:.2f} {:.2f} {:.5f}".format(vx,vy,vz,w))
 
                 speed = np.linalg.norm( carla_vec_to_np_array(vehicle.get_velocity()))
                 throttle, steer = controller.get_control(traj, speed, desired_speed=25, dt=1./FPS)
@@ -232,7 +235,8 @@ def main(use_lane_detector=False, mapid=4):
 
                 cross_track_error = int(dist)
                 max_error = max(max_error, cross_track_error)
-
+                if cross_track_error > 0:
+                    cross_track_list.append(cross_track_error)
                 wp = m.get_waypoint(vehicle.get_transform().location)
                 vehicle_loc = carla_vec_to_np_array(wp.transform.location)
 
@@ -243,6 +247,10 @@ def main(use_lane_detector=False, mapid=4):
                     flag = True
                     count += 1
                 
+                if speed < 5 and flag == False:
+                    print("----------------------------------------\nSTOP, car accident !!!")
+                    break
+
                 # plot_map(m, vehicle)
 
                 if use_lane_detector:
@@ -291,6 +299,8 @@ def main(use_lane_detector=False, mapid=4):
                     if cv2.waitKey(25) & 0xFF == ord('q'):
                         cv2.destroyAllWindows()
 
+                fps_list.append(clock.get_fps())
+
                 # Draw the display pygame.
                 draw_image(display, image_rgb)
                 display.blit(
@@ -318,14 +328,13 @@ def main(use_lane_detector=False, mapid=4):
                     imgdata = imgdata.swapaxes(0,1)
                     if frame < 1200:
                         images.append(imgdata)
-                
 
     finally:
-
         print('destroying actors.')
         for actor in actor_list:
             actor.destroy()
-
+        print('mean cross track error: ',np.mean(np.array(cross_track_list)))
+        print('mean fps: ',np.mean(np.array(fps_list)))
         pygame.quit()
         print('done.')
 
@@ -333,7 +342,7 @@ def main(use_lane_detector=False, mapid=4):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Runs Carla simulation with your control algorithm.')
     parser.add_argument("--ld", action="store_true", help="Use reference trajectory from your LaneDetector class")
-    parser.add_argument("--mapid", default=4, help="Choose map from 1 to 5")
+    parser.add_argument("--mapid", default = "4", help="Choose map from 1 to 5")
     args = parser.parse_args()
 
     try:
