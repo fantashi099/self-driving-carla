@@ -136,11 +136,11 @@ def main(use_lane_detector=False, mapid=4):
     try:
         m = world.get_map()
 
-        if mapid == 4:
+        if mapid == '4':
             spawn_id = 90
-        elif mapid == 5:
+        elif mapid == '5':
             spawn_id = 80
-        elif mapid == 2:
+        elif mapid == '2':
             spawn_id = 2
         else:
             spawn_id = 50
@@ -211,15 +211,15 @@ def main(use_lane_detector=False, mapid=4):
                     traj = get_trajectory_from_map(m, vehicle)
 
                 # get velocity and angular velocity
-                vel = carla_vec_to_np_array(vehicle.get_velocity())
-                forward = carla_vec_to_np_array(vehicle.get_transform().get_forward_vector())
-                right = carla_vec_to_np_array(vehicle.get_transform().get_right_vector())
-                up = carla_vec_to_np_array(vehicle.get_transform().get_up_vector())
-                vx = vel.dot(forward)
-                vy = vel.dot(right)
-                vz = vel.dot(up)
-                ang_vel = carla_vec_to_np_array(vehicle.get_angular_velocity())
-                w = ang_vel.dot(up)
+                # vel = carla_vec_to_np_array(vehicle.get_velocity())
+                # forward = carla_vec_to_np_array(vehicle.get_transform().get_forward_vector())
+                # right = carla_vec_to_np_array(vehicle.get_transform().get_right_vector())
+                # up = carla_vec_to_np_array(vehicle.get_transform().get_up_vector())
+                # vx = vel.dot(forward)
+                # vy = vel.dot(right)
+                # vz = vel.dot(up)
+                # ang_vel = carla_vec_to_np_array(vehicle.get_angular_velocity())
+                # w = ang_vel.dot(up)
                 # print("vx vy vz w {:.2f} {:.2f} {:.2f} {:.5f}".format(vx,vy,vz,w))
 
                 speed = np.linalg.norm( carla_vec_to_np_array(vehicle.get_velocity()))
@@ -333,7 +333,7 @@ def main(use_lane_detector=False, mapid=4):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Runs Carla simulation with your control algorithm.')
     parser.add_argument("--ld", action="store_true", help="Use reference trajectory from your LaneDetector class")
-    parser.add_argument("--mapid", default=4, help="Choose map from 1 to 5")
+    parser.add_argument("--mapid", default="4", help="Choose map from 1 to 5")
     args = parser.parse_args()
 
     try:
