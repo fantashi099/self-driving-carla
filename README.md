@@ -76,8 +76,6 @@ If you use multiple version python:
 $ py -3.7 -m carla_sim --ld --mapid=4
 ```
 
-List of map: [3,4,5] is completed
-
 ### Result:
 
 Link youtube: https://www.youtube.com/watch?v=5EexRdqtiHM&list=PLc0OzM-aFT-SIF2rkJ2lLJwLAC5tLIsLm&index=1
@@ -93,6 +91,10 @@ Demo with rainning:
 Demo with night:
 
 [![demo_night](images/night.gif)](https://youtu.be/J9hN0RLYVvE)
+
+
+### List of map: [3,4,5] is completed
+![map_img](images/map.png)
 
 
 ### References:

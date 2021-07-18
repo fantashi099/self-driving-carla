@@ -29,6 +29,7 @@ def plot_map(m, vehicle):
     wp = m.get_waypoint(vehicle.get_transform().location)
     vehicle_loc = carla_vec_to_np_array(wp.transform.location)
     plt.scatter([vehicle_loc[0]], [vehicle_loc[1]])
+    plt.title('Town5')
     plt.show()
 
 def get_curvature(polyline):
@@ -146,7 +147,7 @@ def main(fps_sim, mapid):
         actor_list.append(vehicle)
 
         # Show map here
-        # plot_map(m, vehicle)
+        plot_map(m, vehicle)
 
         startPoint = m.get_spawn_points()[spawn_id]
         startPoint = carla_vec_to_np_array(startPoint.location)
