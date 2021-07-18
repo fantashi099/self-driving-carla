@@ -164,7 +164,7 @@ def main(fps_sim, mapid):
         cg = CameraGeometry()
         
         # Change model here
-        ld = LaneDetector(model_path=Path("lane_detection/best_model_multi_dice_loss-5.pth").absolute())
+        ld = LaneDetector(model_path=Path("lane_detection/Deeplabv3+(MobilenetV2).pth").absolute())
 
         #windshield cam
         cam_windshield_transform = carla.Transform(carla.Location(x=0.5, z=cg.height), carla.Rotation(pitch=-1*cg.pitch_deg))
