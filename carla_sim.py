@@ -1,48 +1,16 @@
 # Code based on Carla examples, which are authored by 
 # Computer Vision Center (CVC) at the Universitat Autonoma de Barcelona (UAB).
 
-# How to run: 
-# cd into the parent directory of the 'code' directory and run
-# python -m code.tests.control.carla_sim
-
-
 import carla
 import random
 from pathlib import Path
 import numpy as np
 import pygame
-from util.carla_util import carla_vec_to_np_array, carla_img_to_array, CarlaSyncMode, find_weather_presets, draw_image, get_font, should_quit
+from util.carla_util import *
 from util.geometry_util import dist_point_linestring
 import argparse
 import cv2
 
-
-def plot_map(m, vehicle):
-    import matplotlib.pyplot as plt
-
-    wp_list = m.generate_waypoints(2.0)
-    loc_list = np.array(
-        [carla_vec_to_np_array(wp.transform.location) for wp in wp_list]
-    )
-    plt.scatter(loc_list[:, 0], loc_list[:, 1])
-
-    wp = m.get_waypoint(vehicle.get_transform().location)
-    vehicle_loc = carla_vec_to_np_array(wp.transform.location)
-    plt.scatter([vehicle_loc[0]], [vehicle_loc[1]])
-    plt.title('Town5')
-    plt.show()
-
-def get_curvature(polyline):
-    dx_dt = np.gradient(polyline[:, 0])
-    dy_dt = np.gradient(polyline[:, 1])
-    d2x_dt2 = np.gradient(dx_dt)
-    d2y_dt2 = np.gradient(dy_dt)
-    curvature = (
-        np.abs(d2x_dt2 * dy_dt - dx_dt * d2y_dt2)
-        / (dx_dt * dx_dt + dy_dt * dy_dt) ** 1.5
-    )
-    # print(curvature)
-    return np.max(curvature)
 
 def get_trajectory_from_lane_detector(ld, image):
     # get lane boundaries using the lane detector
@@ -64,29 +32,29 @@ def get_trajectory_from_lane_detector(ld, image):
     # x,y is now in coordinates centered at camera, but camera is 0.5 in front of vehicle center
     # hence correct x coordinates
     x += 0.5
-    traj = np.stack((x,y)).T
-    return traj, img
+    trajectory = np.stack((x,y)).T
+    return trajectory, img
 
-def get_trajectory_from_map(m, vehicle):
+def get_trajectory_from_map(CARLA_map, vehicle):
     # get 80 waypoints each 1m apart. If multiple successors choose the one with lower waypoint.id
-    wp = m.get_waypoint(vehicle.get_transform().location)
-    wps = [wp]
+    waypoint = CARLA_map.get_waypoint(vehicle.get_transform().location)
+    list_waypoint = [waypoint]
     for _ in range(20):
-        next_wps = wp.next(1.0)
+        next_wps = waypoint.next(1.0)
         if len(next_wps) > 0:
-            wp = sorted(next_wps, key=lambda x: x.id)[0]
-        wps.append(wp)
+            waypoint = sorted(next_wps, key=lambda x: x.id)[0]
+        list_waypoint.append(waypoint)
 
     # transform waypoints to vehicle ref frame
-    traj = np.array(
-        [np.array([*carla_vec_to_np_array(x.transform.location), 1.]) for x in wps]
+    trajectory = np.array(
+        [np.array([*carla_vec_to_np_array(x.transform.location), 1.]) for x in list_waypoint]
     ).T
     trafo_matrix_world_to_vehicle = np.array(vehicle.get_transform().get_inverse_matrix())
 
-    traj = trafo_matrix_world_to_vehicle @ traj
-    traj = traj.T
-    traj = traj[:,:2]
-    return traj
+    trajectory = trafo_matrix_world_to_vehicle @ trajectory
+    trajectory = trajectory.T
+    trajectory = trajectory[:,:2]
+    return trajectory
 
 def send_control(vehicle, throttle, steer, brake,
                  hand_brake=False, reverse=False):
@@ -98,7 +66,7 @@ def send_control(vehicle, throttle, steer, brake,
 
 
 
-def main(fps_sim, mapid):
+def main(fps_sim, mapid, weather_idx, showmap):
     # Imports
     from lane_detection.lane_detector import LaneDetector
     from lane_detection.camera_geometry import CameraGeometry
@@ -107,49 +75,30 @@ def main(fps_sim, mapid):
     actor_list = []
     pygame.init()
 
-    display = pygame.display.set_mode(
-        (800, 600),
-        pygame.HWSURFACE | pygame.DOUBLEBUF)
-    font = get_font()
-    clock = pygame.time.Clock()
+    display, font, clock, world = create_carla_world(pygame, mapid)
 
-    client = carla.Client('localhost', 2000)
-    client.set_timeout(40.0)
-
-    client.load_world('Town0' + mapid)
-    world = client.get_world()
     weather_presets = find_weather_presets()
-    world.set_weather(weather_presets[3][0])
+    world.set_weather(weather_presets[weather_idx][0])
 
     controller = PurePursuitPlusPID()
 
     try:
-        m = world.get_map()
+        CARLA_map = world.get_map()
 
-        if mapid == '4':
-            spawn_id = 90
-        elif mapid == '5':
-            spawn_id = 49
-        elif mapid == '2':
-            spawn_id = 18
-        elif mapid == '3':
-            spawn_id = 70
-        else:
-            spawn_id = 40
-
+        # create a vehicle
         blueprint_library = world.get_blueprint_library()
-
         veh_bp = random.choice(blueprint_library.filter('vehicle.audi.tt'))
         veh_bp.set_attribute('color','64,81,181')
-        vehicle = world.spawn_actor(
-            veh_bp,
-            m.get_spawn_points()[spawn_id])
+        spawn_point = random.choice(CARLA_map.get_spawn_points())
+
+        vehicle = world.spawn_actor(veh_bp, spawn_point)
         actor_list.append(vehicle)
 
-        # Show map here
-        plot_map(m, vehicle)
+        # Show map
+        if showmap:
+            plot_map(CARLA_map, mapid, vehicle)
 
-        startPoint = m.get_spawn_points()[spawn_id]
+        startPoint = spawn_point
         startPoint = carla_vec_to_np_array(startPoint.location)
 
         # visualization cam (no functionality)
@@ -164,10 +113,10 @@ def main(fps_sim, mapid):
         # ---------------------------------
         cg = CameraGeometry()
         
-        # Change model here
+        # TODO: Change model here
         ld = LaneDetector(model_path=Path("lane_detection/Deeplabv3+(MobilenetV2).pth").absolute())
 
-        #windshield cam
+        # Windshield cam
         cam_windshield_transform = carla.Transform(carla.Location(x=0.5, z=cg.height), carla.Rotation(pitch=-1*cg.pitch_deg))
         bp = blueprint_library.find('sensor.camera.rgb')
         fov = cg.field_of_view_deg
@@ -184,7 +133,7 @@ def main(fps_sim, mapid):
 
         flag = True
         max_error = 0
-        FPS = int(fps_sim)
+        FPS = fps_sim
         cross_track_list = []
         fps_list = []
 
@@ -200,30 +149,30 @@ def main(fps_sim, mapid):
 
                 snapshot, image_rgb, image_windshield = tick_response
                 try:
-                    traj, img = get_trajectory_from_lane_detector(ld, image_windshield)
+                    trajectory, img = get_trajectory_from_lane_detector(ld, image_windshield)
                 except:
-                    traj = get_trajectory_from_map(m, vehicle)
+                    trajectory = get_trajectory_from_map(CARLA_map, vehicle)
 
-                max_curvature = get_curvature(np.array(traj))
+                max_curvature = get_curvature(np.array(trajectory))
                 if max_curvature > 0.005 and flag == False:
                     move_speed = np.abs(25 - 100*max_curvature)
                 else:
                     move_speed = 25
 
                 speed = np.linalg.norm( carla_vec_to_np_array(vehicle.get_velocity()))
-                throttle, steer = controller.get_control(traj, speed, desired_speed=move_speed, dt=1./FPS)
+                throttle, steer = controller.get_control(trajectory, speed, desired_speed=move_speed, dt=1./FPS)
                 send_control(vehicle, throttle, steer, 0)
 
                 fps = round(1.0 / snapshot.timestamp.delta_seconds)
 
-                dist = dist_point_linestring(np.array([0,0]), traj)
+                dist = dist_point_linestring(np.array([0,0]), trajectory)
 
                 cross_track_error = int(dist)
                 max_error = max(max_error, cross_track_error)
                 if cross_track_error > 0:
                     cross_track_list.append(cross_track_error)
-                wp = m.get_waypoint(vehicle.get_transform().location)
-                vehicle_loc = carla_vec_to_np_array(wp.transform.location)
+                waypoint = CARLA_map.get_waypoint(vehicle.get_transform().location)
+                vehicle_loc = carla_vec_to_np_array(waypoint.transform.location)
 
                 if np.linalg.norm(vehicle_loc-startPoint) > 20:
                     flag = False
@@ -315,11 +264,13 @@ def main(fps_sim, mapid):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Runs Carla simulation with your control algorithm.')
     parser.add_argument("--mapid", default = "4", help="Choose map from 1 to 5")
-    parser.add_argument("--fps", default="20", help="Setting FPS")
+    parser.add_argument("--fps", type=int, default=20, help="Setting FPS")
+    parser.add_argument("--weather", type=int, default=6, help="Check function find_weather in carla_util.py for mor information")
+    parser.add_argument("--showmap", type=bool, default=False, help="Display Map")
     args = parser.parse_args()
 
     try:
-        main(fps_sim = args.fps, mapid = args.mapid)
+        main(fps_sim = args.fps, mapid = args.mapid, weather_idx=args.weather, showmap=args.showmap)
 
     except KeyboardInterrupt:
         print('\nCancelled by user. Bye!')

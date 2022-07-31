@@ -12,6 +12,8 @@
 
 ---
 
+
+
 ### Introduction:
 
 Carla self-driving based on lane detection. 
@@ -51,6 +53,12 @@ C:\> SET PATH=C:\tools\cuda\bin;%PATH%
 <path-to-carla>\PythonAPI\carla\dist\carla-0.9.10-py3.7-win-amd64.egg
 ```
 
+#### Carla Ubuntu Setub:
+```sh
+$ export PYTHONPATH=$PYTHONPATH:~/Desktop/Workplaces/Carla/PythonAPI/carla/dist/carla-0.9.13-py3.7-linux-x86_64.egg
+# If the newest OpenCV get error when running code, you should run this
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
+```
 
 ### Usage:
 

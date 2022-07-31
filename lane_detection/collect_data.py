@@ -1,10 +1,6 @@
 # Code based on Carla examples, which are authored by
 # Computer Vision Center (CVC) at the Universitat Autonoma de Barcelona (UAB).
 
-# How to run:
-# Start a Carla simulation
-# cd into the parent directory of the 'code' directory and run
-# python -m code.solutions.lane_detection.collect_data
 
 import os
 import carla
@@ -12,46 +8,16 @@ import random
 import pygame
 import numpy as np
 import cv2
+import argparse
 from datetime import datetime
 
+from ..util.carla_util import *
 
-from ..util.carla_util import (
-    carla_vec_to_np_array,
-    CarlaSyncMode,
-    find_weather_presets,
-    draw_image,
-    get_font,
-    should_quit,
-)
 from .camera_geometry import (
     get_intrinsic_matrix,
     project_polyline,
     CameraGeometry,
 )
-
-def mkdir_if_not_exist(path):
-    if not os.path.exists(path):
-        os.makedirs(path)
-
-store_files = True
-town_string = "Town04"
-cg = CameraGeometry()
-width = cg.image_width
-height = cg.image_height
-
-now = datetime.now()
-date_time_string = now.strftime("%m_%d_%Y_%H_%M_%S")
-
-
-def plot_map(m):
-    import matplotlib.pyplot as plt
-
-    wp_list = m.generate_waypoints(2.0)
-    loc_list = np.array(
-        [carla_vec_to_np_array(wp.transform.location) for wp in wp_list]
-    )
-    plt.scatter(loc_list[:, 0], loc_list[:, 1])
-    plt.show()
 
 
 def random_transform_disturbance(transform):
@@ -73,19 +39,6 @@ def random_transform_disturbance(transform):
     return carla.Transform(
         carla.Location(x, y, z), carla.Rotation(pitch, yaw, roll)
     )
-
-
-def get_curvature(polyline):
-    dx_dt = np.gradient(polyline[:, 0])
-    dy_dt = np.gradient(polyline[:, 1])
-    d2x_dt2 = np.gradient(dx_dt)
-    d2y_dt2 = np.gradient(dy_dt)
-    curvature = (
-        np.abs(d2x_dt2 * dy_dt - dx_dt * d2y_dt2)
-        / (dx_dt * dx_dt + dy_dt * dy_dt) ** 1.5
-    )
-    # print(curvature)
-    return np.max(curvature)
 
 
 def create_lane_lines(
@@ -143,23 +96,7 @@ def check_inside_image(pixel_array, width, height):
     return ratio > 0.5
 
 
-def carla_img_to_array(image):
-    array = np.frombuffer(image.raw_data, dtype=np.dtype("uint8"))
-    array = np.reshape(array, (image.height, image.width, 4))
-    array = array[:, :, :3]
-    array = array[:, :, ::-1]
-    return array
-
-
-def save_img(image, path, raw=False):
-    array = carla_img_to_array(image)
-    if raw:
-        np.save(path, array)
-    else:
-        cv2.imwrite(path, array)
-
-
-def save_label_img(lb_left, lb_right, path):
+def save_label_img(lb_left, lb_right, path, width, height):
     label = np.zeros((height, width, 3))
     colors = [[1, 1, 1], [2, 2, 2]]
     for color, lb in zip(colors, [lb_left, lb_right]):
@@ -170,15 +107,16 @@ def save_label_img(lb_left, lb_right, path):
     cv2.imwrite(path, label)
 
 
-def get_random_spawn_point(m):
-    pose = random.choice(m.get_spawn_points())
-    return m.get_waypoint(pose.location)
+def main(mapid, store_files):
+    now = datetime.now()
+    date_time_string = now.strftime("%m_%d_%Y_%H_%M_%S")
+    data_folder = os.path.join("code", "solutions", "lane_detection", "data")
 
-
-data_folder = os.path.join("code", "solutions", "lane_detection", "data")
-
-
-def main():
+    town_string = f"Town0{mapid}"
+    cg = CameraGeometry()
+    width = cg.image_width
+    height = cg.image_height
+    
     mkdir_if_not_exist(data_folder)
     actor_list = []
     pygame.init()
@@ -196,10 +134,10 @@ def main():
     world = client.get_world()
 
     try:
-        m = world.get_map()
-        # plot_map(m)
-        start_pose = random.choice(m.get_spawn_points())
-        spawn_waypoint = m.get_waypoint(start_pose.location)
+        CARLA_map = world.get_map()
+        # plot_map(m, mapid)
+        start_pose = random.choice(CARLA_map.get_spawn_points())
+        spawn_waypoint = CARLA_map.get_waypoint(start_pose.location)
 
         # set weather to sunny
         weather_preset, weather_preset_str = find_weather_presets()[0]
@@ -233,7 +171,9 @@ def main():
         bp.set_attribute("image_size_y", str(height))
         bp.set_attribute("fov", str(fov))
         camera_rgb = world.spawn_actor(
-            bp, cam_rgb_transform, attach_to=vehicle
+            bp, 
+            cam_rgb_transform, 
+            attach_to=vehicle
         )
         actor_list.append(camera_rgb)
 
@@ -270,7 +210,7 @@ def main():
                 jump = np.random.uniform(min_jump, max_jump)
                 next_waypoints = spawn_waypoint.next(jump)
                 if not next_waypoints:
-                    spawn_waypoint = get_random_spawn_point(m)
+                    spawn_waypoint = get_random_spawn_point(CARLA_map)
                 else:
                     spawn_waypoint = random.choice(next_waypoints)
 
@@ -314,10 +254,10 @@ def main():
                 )
 
                 center_list, left_boundary, right_boundary = create_lane_lines(
-                    m, vehicle
+                    CARLA_map, vehicle
                 )
                 if center_list is None:
-                    spawn_waypoint = get_random_spawn_point(m)
+                    spawn_waypoint = get_random_spawn_point(CARLA_map)
                     continue
 
                 projected_center = project_polyline(
@@ -338,7 +278,7 @@ def main():
                         projected_right_boundary, width, height
                     )
                 ):
-                    spawn_waypoint = get_random_spawn_point(m)
+                    spawn_waypoint = get_random_spawn_point(CARLA_map)
                     continue
                 if len(projected_center) > 1:
                     pygame.draw.lines(
@@ -382,6 +322,8 @@ def main():
                         projected_left_boundary,
                         projected_right_boundary,
                         label_path,
+                        width,
+                        height
                     )
                     # borders
                     border_array = np.hstack(
@@ -417,10 +359,14 @@ def main():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='CARLA craw data from map')
+    parser.add_argument("--mapid", default=4, help="Choose map from 1 to 5")
+    parser.add_argument("--store", default=True, help="Store files")
+    args = parser.parse_args()
 
     try:
 
-        main()
+        main(args.mapid, args.store)
 
     except KeyboardInterrupt:
         print("\nCancelled by user. Bye!")

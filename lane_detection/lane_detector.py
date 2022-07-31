@@ -47,7 +47,7 @@ class LaneDetector():
         image_tensor = self.to_tensor_func(image=img_array)["image"]
         x_tensor = torch.from_numpy(image_tensor).to(self.device).unsqueeze(0)
         model_output = self.model.predict(x_tensor).cpu().numpy()
-        background, left, right = model_output[0,0,:,:], model_output[0,1,:,:], model_output[0,2,:,:] 
+        background, left, right = model_output[0,0,:,:], model_output[0,1,:,:], model_output[0,2,:,:]
         return background, left, right
     
     def detect_and_fit(self, img_array):
