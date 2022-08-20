@@ -12,11 +12,11 @@ import argparse
 import cv2
 
 
-def get_trajectory_from_lane_detector(ld, image):
+def get_trajectory_from_lane_detector(lane_detector, image):
     # get lane boundaries using the lane detector
     image_arr = carla_img_to_array(image)
 
-    poly_left, poly_right, img_left, img_right = ld(image_arr)
+    poly_left, poly_right, img_left, img_right = lane_detector(image_arr)
     # https://stackoverflow.com/questions/50966204/convert-images-from-1-1-to-0-255
     img = img_left + img_right
     img = cv2.normalize(img,None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
@@ -66,8 +66,9 @@ def send_control(vehicle, throttle, steer, brake,
 
 
 
-def main(fps_sim, mapid, weather_idx, showmap):
+def main(fps_sim, mapid, weather_idx, showmap, model_type):
     # Imports
+    from lane_detection.openvino_lane_detector import OpenVINOLaneDetector
     from lane_detection.lane_detector import LaneDetector
     from lane_detection.camera_geometry import CameraGeometry
     from control.pure_pursuit import PurePursuitPlusPID
@@ -81,6 +82,8 @@ def main(fps_sim, mapid, weather_idx, showmap):
     world.set_weather(weather_presets[weather_idx][0])
 
     controller = PurePursuitPlusPID()
+    cross_track_list = []
+    fps_list = []
 
     try:
         CARLA_map = world.get_map()
@@ -114,7 +117,10 @@ def main(fps_sim, mapid, weather_idx, showmap):
         cg = CameraGeometry()
         
         # TODO: Change model here
-        ld = LaneDetector(model_path=Path("lane_detection/Deeplabv3+(MobilenetV2).pth").absolute())
+        if model_type == "openvino":
+            lane_detector = OpenVINOLaneDetector()
+        else:
+            lane_detector = LaneDetector(model_path=Path("lane_detection/Deeplabv3+(MobilenetV2).pth").absolute())
 
         # Windshield cam
         cam_windshield_transform = carla.Transform(carla.Location(x=0.5, z=cg.height), carla.Rotation(pitch=-1*cg.pitch_deg))
@@ -134,8 +140,6 @@ def main(fps_sim, mapid, weather_idx, showmap):
         flag = True
         max_error = 0
         FPS = fps_sim
-        cross_track_list = []
-        fps_list = []
 
         # Create a synchronous mode context.
         with CarlaSyncMode(world, *sensors, fps=FPS) as sync_mode:
@@ -149,7 +153,7 @@ def main(fps_sim, mapid, weather_idx, showmap):
 
                 snapshot, image_rgb, image_windshield = tick_response
                 try:
-                    trajectory, img = get_trajectory_from_lane_detector(ld, image_windshield)
+                    trajectory, img = get_trajectory_from_lane_detector(lane_detector, image_windshield)
                 except:
                     trajectory = get_trajectory_from_map(CARLA_map, vehicle)
 
@@ -267,10 +271,11 @@ if __name__ == '__main__':
     parser.add_argument("--fps", type=int, default=20, help="Setting FPS")
     parser.add_argument("--weather", type=int, default=6, help="Check function find_weather in carla_util.py for mor information")
     parser.add_argument("--showmap", type=bool, default=False, help="Display Map")
+    parser.add_argument("--model", default="openvino", help="Choose between OpenVINO model and PyTorch model")
     args = parser.parse_args()
 
     try:
-        main(fps_sim = args.fps, mapid = args.mapid, weather_idx=args.weather, showmap=args.showmap)
+        main(fps_sim = args.fps, mapid = args.mapid, weather_idx=args.weather, showmap=args.showmap, model_type=args.model)
 
     except KeyboardInterrupt:
         print('\nCancelled by user. Bye!')

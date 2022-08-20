@@ -16,9 +16,9 @@
 
 ### Introduction:
 
-Carla self-driving based on lane detection. 
+Carla self-driving based on lane detection. We use model DeeplabV3+MobileNetV2 in either pytorch model or openvino model
 
-*This code is only test on Window10, with 4GB GPU Nvidia GTX-1050!!!
+*This code is test on Window10, with 4GB GPU Nvidia GTX-1050 and Ubuntu 22.04, with 4GB GPU Nvidia GTX-1060!!!
 
 ### System requirements:
 
@@ -55,7 +55,7 @@ C:\> SET PATH=C:\tools\cuda\bin;%PATH%
 
 #### Carla Ubuntu Setub:
 ```sh
-$ export PYTHONPATH=$PYTHONPATH:~/Desktop/Workplaces/Carla/PythonAPI/carla/dist/carla-0.9.13-py3.7-linux-x86_64.egg
+$ export PYTHONPATH=$PYTHONPATH:<path-to-working-directory/Carla/PythonAPI/carla/dist/carla-0.9.13-py3.7-linux-x86_64.egg
 # If the newest OpenCV get error when running code, you should run this
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
 ```
@@ -76,13 +76,9 @@ $ python carla_sim.py
 ```
 With specify argument:
 ```sh
-$ python carla_sim.py --fps=30 --mapid=4
+$ python carla_sim.py --fps=30 --mapid=4 --model openvino
 ```
 
-If you use multiple version python:
-```sh
-$ py -3.7 -m carla_sim --ld --mapid=4
-```
 
 ### Result:
 
