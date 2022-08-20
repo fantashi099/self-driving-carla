@@ -1,0 +1,7 @@
+mo --input_model lane_model.onnx --input_shape [1,3,512,512] \
+    --data_type FP16 --scale_values [58.395, 57.12 , 57.375] \
+    --mean_values [123.675, 116.28 , 103.53] --output_dir
+
+
+
+https://chowdera.com/2021/12/202112260757389871.html
