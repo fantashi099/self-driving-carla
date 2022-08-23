@@ -22,20 +22,10 @@ class OpenVINOLaneDetector():
         return self.detect(img_array)
 
     def detect(self, img_array):
-        resize_flag = False
-        if img_array.shape[:2] != (512, 512):
-            w_ratio = img_array.shape[0] // 512
-            h_ratio = img_array.shape[1] // 512
-            img_array = cv2.resize(img_array, (512, 512))
-            resize_flag = True
-
         img_array = np.expand_dims(np.transpose(img_array, (2, 0, 1)), 0)
         output_layer_ir = next(iter(self.compiled_model_ir.outputs))
         model_output = self.compiled_model_ir([img_array])[output_layer_ir]
         background, left, right = model_output[0,0,:,:], model_output[0,1,:,:], model_output[0,2,:,:]
-        if resize_flag:
-            left = cv2.resize(left, (512*h_ratio, 512*w_ratio))
-            right = cv2.resize(right, (512*h_ratio, 512*w_ratio))
         return background, left, right
 
     def detect_and_fit(self, img_array):

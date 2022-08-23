@@ -2,7 +2,7 @@
 <net name="torch_jit" version="11">
 	<layers>
 		<layer id="0" name="x.1" type="Parameter" version="opset1">
-			<data element_type="f32" shape="1,3,512,512"/>
+			<data element_type="f32" shape="1,3,512,1024"/>
 			<rt_info>
 				<attribute name="fused_names" value="x.1" version="0"/>
 				<attribute name="old_api_map_element_type" value="f16" version="0"/>
@@ -12,7 +12,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>512</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 			</output>
 		</layer>
@@ -61,7 +61,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>512</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -75,7 +75,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>512</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 			</output>
 		</layer>
@@ -125,7 +125,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>512</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>16</dim>
@@ -139,7 +139,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>256</dim>
-					<dim>256</dim>
+					<dim>512</dim>
 				</port>
 			</output>
 		</layer>
@@ -186,7 +186,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>256</dim>
-					<dim>256</dim>
+					<dim>512</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -200,7 +200,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>256</dim>
-					<dim>256</dim>
+					<dim>512</dim>
 				</port>
 			</output>
 		</layer>
@@ -251,7 +251,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>256</dim>
-					<dim>256</dim>
+					<dim>512</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -261,7 +261,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>256</dim>
-					<dim>256</dim>
+					<dim>512</dim>
 				</port>
 			</output>
 		</layer>
@@ -275,13 +275,13 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>256</dim>
-					<dim>256</dim>
+					<dim>512</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>256</dim>
-					<dim>256</dim>
+					<dim>512</dim>
 				</port>
 			</input>
 			<output>
@@ -289,7 +289,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>256</dim>
-					<dim>256</dim>
+					<dim>512</dim>
 				</port>
 			</output>
 		</layer>
@@ -312,7 +312,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>256</dim>
-					<dim>256</dim>
+					<dim>512</dim>
 				</port>
 			</input>
 			<output>
@@ -480,7 +480,7 @@
 			</output>
 		</layer>
 		<layer id="31" name="onnx::Sub_349" type="Const" version="opset1">
-			<data element_type="i64" offset="906" shape="" size="8"/>
+			<data element_type="i64" offset="938" shape="" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Sub_349" version="0"/>
 			</rt_info>
@@ -672,7 +672,7 @@
 			</output>
 		</layer>
 		<layer id="46" name="onnx::Concat_389" type="Const" version="opset1">
-			<data element_type="i64" offset="938" shape="4" size="32"/>
+			<data element_type="i64" offset="946" shape="4" size="32"/>
 			<output>
 				<port id="0" names="onnx::Concat_389" precision="I64">
 					<dim>4</dim>
@@ -699,7 +699,7 @@
 			</output>
 		</layer>
 		<layer id="48" name="onnx::Reshape_391" type="Const" version="opset1">
-			<data element_type="i64" offset="970" shape="2" size="16"/>
+			<data element_type="i64" offset="978" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Reshape_391" version="0"/>
 			</rt_info>
@@ -730,7 +730,7 @@
 			</output>
 		</layer>
 		<layer id="50" name="onnx::Slice_394" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_393, onnx::Slice_394, onnx::Slice_395, onnx::Slice_396, onnx::Transpose_397" version="0"/>
 			</rt_info>
@@ -741,7 +741,7 @@
 			</output>
 		</layer>
 		<layer id="51" name="onnx::Slice_395" type="Const" version="opset1">
-			<data element_type="i64" offset="994" shape="1" size="8"/>
+			<data element_type="i64" offset="1002" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_393, onnx::Slice_394, onnx::Slice_395, onnx::Slice_396, onnx::Transpose_397" version="0"/>
 			</rt_info>
@@ -752,7 +752,7 @@
 			</output>
 		</layer>
 		<layer id="52" name="onnx::Slice_396" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_393, onnx::Slice_394, onnx::Slice_395, onnx::Slice_396, onnx::Transpose_397" version="0"/>
 			</rt_info>
@@ -790,7 +790,7 @@
 			</output>
 		</layer>
 		<layer id="54" name="Constant_498" type="Const" version="opset1">
-			<data element_type="i64" offset="1002" shape="2" size="16"/>
+			<data element_type="i64" offset="1010" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_498" version="0"/>
 			</rt_info>
@@ -821,7 +821,7 @@
 			</output>
 		</layer>
 		<layer id="56" name="onnx::Reshape_399" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Reshape_399" version="0"/>
 			</rt_info>
@@ -881,7 +881,7 @@
 			</output>
 		</layer>
 		<layer id="60" name="onnx::Pad_402_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1018" shape="" size="2"/>
+			<data element_type="f16" offset="1026" shape="" size="2"/>
 			<output>
 				<port id="0" precision="FP16"/>
 			</output>
@@ -909,7 +909,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>256</dim>
-					<dim>256</dim>
+					<dim>512</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>4</dim>
@@ -924,12 +924,12 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>257</dim>
-					<dim>257</dim>
+					<dim>513</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="63" name="Reshape_899_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1020" shape="16, 1, 1, 3, 3" size="288"/>
+			<data element_type="f16" offset="1028" shape="16, 1, 1, 3, 3" size="288"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>16</dim>
@@ -974,7 +974,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>257</dim>
-					<dim>257</dim>
+					<dim>513</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>16</dim>
@@ -989,12 +989,12 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="66" name="Reshape_985_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1308" shape="1, 16, 1, 1" size="32"/>
+			<data element_type="f16" offset="1316" shape="1, 16, 1, 1" size="32"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -1036,7 +1036,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -1050,7 +1050,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
@@ -1063,7 +1063,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</input>
 			<output>
@@ -1071,12 +1071,12 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="70" name="Constant_1014" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_1014" version="0"/>
 			</rt_info>
@@ -1096,7 +1096,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>2</dim>
@@ -1112,7 +1112,7 @@
 			</output>
 		</layer>
 		<layer id="72" name="encoder.model.blocks.0.0.se.conv_reduce.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1356" shape="8, 16, 1, 1" size="256"/>
+			<data element_type="f16" offset="1364" shape="8, 16, 1, 1" size="256"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>8</dim>
@@ -1174,7 +1174,7 @@
 			</output>
 		</layer>
 		<layer id="75" name="Reshape_1036_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1612" shape="1, 8, 1, 1" size="16"/>
+			<data element_type="f16" offset="1620" shape="1, 8, 1, 1" size="16"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -1256,7 +1256,7 @@
 			</output>
 		</layer>
 		<layer id="79" name="encoder.model.blocks.0.0.se.conv_expand.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1628" shape="16, 8, 1, 1" size="256"/>
+			<data element_type="f16" offset="1636" shape="16, 8, 1, 1" size="256"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>16</dim>
@@ -1318,7 +1318,7 @@
 			</output>
 		</layer>
 		<layer id="82" name="Reshape_1085_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1884" shape="1, 16, 1, 1" size="32"/>
+			<data element_type="f16" offset="1892" shape="1, 16, 1, 1" size="32"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -1449,7 +1449,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -1463,12 +1463,12 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="91" name="onnx::Conv_827_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1916" shape="16, 16, 1, 1" size="512"/>
+			<data element_type="f16" offset="1924" shape="16, 16, 1, 1" size="512"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>16</dim>
@@ -1511,7 +1511,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>16</dim>
@@ -1525,12 +1525,12 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="94" name="Reshape_1137_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2428" shape="1, 16, 1, 1" size="32"/>
+			<data element_type="f16" offset="2436" shape="1, 16, 1, 1" size="32"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -1572,7 +1572,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -1586,12 +1586,12 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="97" name="onnx::Conv_830_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2460" shape="72, 16, 1, 1" size="2304"/>
+			<data element_type="f16" offset="2468" shape="72, 16, 1, 1" size="2304"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>72</dim>
@@ -1634,7 +1634,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>72</dim>
@@ -1648,12 +1648,12 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="100" name="Reshape_1185_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4764" shape="1, 72, 1, 1" size="144"/>
+			<data element_type="f16" offset="4772" shape="1, 72, 1, 1" size="144"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -1695,7 +1695,7 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -1709,7 +1709,7 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
@@ -1722,7 +1722,7 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</input>
 			<output>
@@ -1730,12 +1730,12 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="104" name="onnx::Sub_426" type="Const" version="opset1">
-			<data element_type="i64" offset="4908" shape="" size="8"/>
+			<data element_type="i64" offset="938" shape="" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Sub_426" version="0"/>
 			</rt_info>
@@ -1753,7 +1753,7 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</input>
 			<output>
@@ -1921,7 +1921,7 @@
 			</output>
 		</layer>
 		<layer id="119" name="onnx::Sub_424" type="Const" version="opset1">
-			<data element_type="i64" offset="4908" shape="" size="8"/>
+			<data element_type="i64" offset="4916" shape="" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Sub_424" version="0"/>
 			</rt_info>
@@ -2113,7 +2113,7 @@
 			</output>
 		</layer>
 		<layer id="134" name="onnx::Concat_464" type="Const" version="opset1">
-			<data element_type="i64" offset="938" shape="4" size="32"/>
+			<data element_type="i64" offset="946" shape="4" size="32"/>
 			<output>
 				<port id="0" names="onnx::Concat_464" precision="I64">
 					<dim>4</dim>
@@ -2140,7 +2140,7 @@
 			</output>
 		</layer>
 		<layer id="136" name="onnx::Reshape_466" type="Const" version="opset1">
-			<data element_type="i64" offset="970" shape="2" size="16"/>
+			<data element_type="i64" offset="978" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Reshape_466" version="0"/>
 			</rt_info>
@@ -2171,7 +2171,7 @@
 			</output>
 		</layer>
 		<layer id="138" name="onnx::Slice_469" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_468, onnx::Slice_469, onnx::Slice_470, onnx::Slice_471, onnx::Transpose_472" version="0"/>
 			</rt_info>
@@ -2182,7 +2182,7 @@
 			</output>
 		</layer>
 		<layer id="139" name="onnx::Slice_470" type="Const" version="opset1">
-			<data element_type="i64" offset="994" shape="1" size="8"/>
+			<data element_type="i64" offset="1002" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_468, onnx::Slice_469, onnx::Slice_470, onnx::Slice_471, onnx::Transpose_472" version="0"/>
 			</rt_info>
@@ -2193,7 +2193,7 @@
 			</output>
 		</layer>
 		<layer id="140" name="onnx::Slice_471" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_468, onnx::Slice_469, onnx::Slice_470, onnx::Slice_471, onnx::Transpose_472" version="0"/>
 			</rt_info>
@@ -2231,7 +2231,7 @@
 			</output>
 		</layer>
 		<layer id="142" name="Constant_1313" type="Const" version="opset1">
-			<data element_type="i64" offset="1002" shape="2" size="16"/>
+			<data element_type="i64" offset="1010" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_1313" version="0"/>
 			</rt_info>
@@ -2262,7 +2262,7 @@
 			</output>
 		</layer>
 		<layer id="144" name="onnx::Reshape_474" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Reshape_474" version="0"/>
 			</rt_info>
@@ -2322,7 +2322,7 @@
 			</output>
 		</layer>
 		<layer id="148" name="onnx::Pad_477_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1018" shape="" size="2"/>
+			<data element_type="f16" offset="1026" shape="" size="2"/>
 			<output>
 				<port id="0" precision="FP16"/>
 			</output>
@@ -2350,7 +2350,7 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>4</dim>
@@ -2365,12 +2365,12 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>129</dim>
-					<dim>129</dim>
+					<dim>257</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="151" name="Reshape_1714_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4916" shape="72, 1, 1, 3, 3" size="1296"/>
+			<data element_type="f16" offset="4924" shape="72, 1, 1, 3, 3" size="1296"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>72</dim>
@@ -2415,7 +2415,7 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>129</dim>
-					<dim>129</dim>
+					<dim>257</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>72</dim>
@@ -2430,12 +2430,12 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="154" name="Reshape_1800_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="6212" shape="1, 72, 1, 1" size="144"/>
+			<data element_type="f16" offset="6220" shape="1, 72, 1, 1" size="144"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -2477,7 +2477,7 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -2491,7 +2491,7 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
@@ -2504,7 +2504,7 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</input>
 			<output>
@@ -2512,12 +2512,12 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="158" name="onnx::Conv_836_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="6356" shape="24, 72, 1, 1" size="3456"/>
+			<data element_type="f16" offset="6364" shape="24, 72, 1, 1" size="3456"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>24</dim>
@@ -2560,7 +2560,7 @@
 					<dim>1</dim>
 					<dim>72</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>24</dim>
@@ -2574,12 +2574,12 @@
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="161" name="Reshape_1849_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="9812" shape="1, 24, 1, 1" size="48"/>
+			<data element_type="f16" offset="9820" shape="1, 24, 1, 1" size="48"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -2621,7 +2621,7 @@
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -2635,12 +2635,12 @@
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="164" name="onnx::Conv_839_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="9860" shape="88, 24, 1, 1" size="4224"/>
+			<data element_type="f16" offset="9868" shape="88, 24, 1, 1" size="4224"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>88</dim>
@@ -2683,7 +2683,7 @@
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>88</dim>
@@ -2697,12 +2697,12 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="167" name="Reshape_1897_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="14084" shape="1, 88, 1, 1" size="176"/>
+			<data element_type="f16" offset="14092" shape="1, 88, 1, 1" size="176"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -2744,7 +2744,7 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -2758,7 +2758,7 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
@@ -2771,7 +2771,7 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</input>
 			<output>
@@ -2779,12 +2779,12 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="171" name="Reshape_1933_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="14260" shape="88, 1, 1, 3, 3" size="1584"/>
+			<data element_type="f16" offset="14268" shape="88, 1, 1, 3, 3" size="1584"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>88</dim>
@@ -2829,7 +2829,7 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>88</dim>
@@ -2844,12 +2844,12 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="174" name="Reshape_2019_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="15844" shape="1, 88, 1, 1" size="176"/>
+			<data element_type="f16" offset="15852" shape="1, 88, 1, 1" size="176"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -2891,7 +2891,7 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -2905,7 +2905,7 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
@@ -2918,7 +2918,7 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</input>
 			<output>
@@ -2926,12 +2926,12 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="178" name="onnx::Conv_845_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="16020" shape="24, 88, 1, 1" size="4224"/>
+			<data element_type="f16" offset="16028" shape="24, 88, 1, 1" size="4224"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>24</dim>
@@ -2974,7 +2974,7 @@
 					<dim>1</dim>
 					<dim>88</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>24</dim>
@@ -2988,12 +2988,12 @@
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="181" name="Reshape_2068_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="20244" shape="1, 24, 1, 1" size="48"/>
+			<data element_type="f16" offset="20252" shape="1, 24, 1, 1" size="48"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -3035,7 +3035,7 @@
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -3049,7 +3049,7 @@
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
@@ -3063,13 +3063,13 @@
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</input>
 			<output>
@@ -3077,12 +3077,12 @@
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="185" name="onnx::Conv_848_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="20292" shape="96, 24, 1, 1" size="4608"/>
+			<data element_type="f16" offset="20300" shape="96, 24, 1, 1" size="4608"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>96</dim>
@@ -3125,7 +3125,7 @@
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>96</dim>
@@ -3139,12 +3139,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="188" name="Reshape_2117_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="24900" shape="1, 96, 1, 1" size="192"/>
+			<data element_type="f16" offset="24908" shape="1, 96, 1, 1" size="192"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -3186,7 +3186,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -3200,7 +3200,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
@@ -3251,7 +3251,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -3261,7 +3261,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
@@ -3275,13 +3275,13 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</input>
 			<output>
@@ -3289,12 +3289,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="197" name="onnx::Sub_505" type="Const" version="opset1">
-			<data element_type="i64" offset="25092" shape="" size="8"/>
+			<data element_type="i64" offset="25100" shape="" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Sub_505" version="0"/>
 			</rt_info>
@@ -3312,7 +3312,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 			</input>
 			<output>
@@ -3480,7 +3480,7 @@
 			</output>
 		</layer>
 		<layer id="212" name="onnx::Sub_503" type="Const" version="opset1">
-			<data element_type="i64" offset="25092" shape="" size="8"/>
+			<data element_type="i64" offset="25108" shape="" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Sub_503" version="0"/>
 			</rt_info>
@@ -3672,7 +3672,7 @@
 			</output>
 		</layer>
 		<layer id="227" name="onnx::Concat_543" type="Const" version="opset1">
-			<data element_type="i64" offset="938" shape="4" size="32"/>
+			<data element_type="i64" offset="946" shape="4" size="32"/>
 			<output>
 				<port id="0" names="onnx::Concat_543" precision="I64">
 					<dim>4</dim>
@@ -3699,7 +3699,7 @@
 			</output>
 		</layer>
 		<layer id="229" name="onnx::Reshape_545" type="Const" version="opset1">
-			<data element_type="i64" offset="970" shape="2" size="16"/>
+			<data element_type="i64" offset="978" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Reshape_545" version="0"/>
 			</rt_info>
@@ -3730,7 +3730,7 @@
 			</output>
 		</layer>
 		<layer id="231" name="onnx::Slice_548" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_547, onnx::Slice_548, onnx::Slice_549, onnx::Slice_550, onnx::Transpose_551" version="0"/>
 			</rt_info>
@@ -3741,7 +3741,7 @@
 			</output>
 		</layer>
 		<layer id="232" name="onnx::Slice_549" type="Const" version="opset1">
-			<data element_type="i64" offset="994" shape="1" size="8"/>
+			<data element_type="i64" offset="1002" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_547, onnx::Slice_548, onnx::Slice_549, onnx::Slice_550, onnx::Transpose_551" version="0"/>
 			</rt_info>
@@ -3752,7 +3752,7 @@
 			</output>
 		</layer>
 		<layer id="233" name="onnx::Slice_550" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_547, onnx::Slice_548, onnx::Slice_549, onnx::Slice_550, onnx::Transpose_551" version="0"/>
 			</rt_info>
@@ -3790,7 +3790,7 @@
 			</output>
 		</layer>
 		<layer id="235" name="Constant_2248" type="Const" version="opset1">
-			<data element_type="i64" offset="1002" shape="2" size="16"/>
+			<data element_type="i64" offset="1010" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_2248" version="0"/>
 			</rt_info>
@@ -3821,7 +3821,7 @@
 			</output>
 		</layer>
 		<layer id="237" name="onnx::Reshape_553" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Reshape_553" version="0"/>
 			</rt_info>
@@ -3881,7 +3881,7 @@
 			</output>
 		</layer>
 		<layer id="241" name="onnx::Pad_556_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1018" shape="" size="2"/>
+			<data element_type="f16" offset="1026" shape="" size="2"/>
 			<output>
 				<port id="0" precision="FP16"/>
 			</output>
@@ -3909,7 +3909,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>64</dim>
-					<dim>64</dim>
+					<dim>128</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>4</dim>
@@ -3924,12 +3924,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>67</dim>
-					<dim>67</dim>
+					<dim>131</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="244" name="Reshape_2649_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="25100" shape="96, 1, 1, 5, 5" size="4800"/>
+			<data element_type="f16" offset="25116" shape="96, 1, 1, 5, 5" size="4800"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>96</dim>
@@ -3974,7 +3974,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>67</dim>
-					<dim>67</dim>
+					<dim>131</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>96</dim>
@@ -3989,12 +3989,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="247" name="Reshape_2735_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="29900" shape="1, 96, 1, 1" size="192"/>
+			<data element_type="f16" offset="29916" shape="1, 96, 1, 1" size="192"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -4036,7 +4036,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -4050,7 +4050,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -4101,7 +4101,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -4111,7 +4111,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -4125,13 +4125,13 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -4139,12 +4139,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="256" name="Constant_2767" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_2767" version="0"/>
 			</rt_info>
@@ -4164,7 +4164,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>2</dim>
@@ -4180,7 +4180,7 @@
 			</output>
 		</layer>
 		<layer id="258" name="encoder.model.blocks.2.0.se.conv_reduce.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="30092" shape="24, 96, 1, 1" size="4608"/>
+			<data element_type="f16" offset="30108" shape="24, 96, 1, 1" size="4608"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>24</dim>
@@ -4242,7 +4242,7 @@
 			</output>
 		</layer>
 		<layer id="261" name="Reshape_2789_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="34700" shape="1, 24, 1, 1" size="48"/>
+			<data element_type="f16" offset="34716" shape="1, 24, 1, 1" size="48"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -4324,7 +4324,7 @@
 			</output>
 		</layer>
 		<layer id="265" name="encoder.model.blocks.2.0.se.conv_expand.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="34748" shape="96, 24, 1, 1" size="4608"/>
+			<data element_type="f16" offset="34764" shape="96, 24, 1, 1" size="4608"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>96</dim>
@@ -4386,7 +4386,7 @@
 			</output>
 		</layer>
 		<layer id="268" name="Reshape_2838_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="39356" shape="1, 96, 1, 1" size="192"/>
+			<data element_type="f16" offset="39372" shape="1, 96, 1, 1" size="192"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -4517,7 +4517,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -4531,12 +4531,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="277" name="onnx::Conv_854_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="39548" shape="40, 96, 1, 1" size="7680"/>
+			<data element_type="f16" offset="39564" shape="40, 96, 1, 1" size="7680"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>40</dim>
@@ -4579,7 +4579,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>40</dim>
@@ -4593,12 +4593,12 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="280" name="Reshape_2890_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="47228" shape="1, 40, 1, 1" size="80"/>
+			<data element_type="f16" offset="47244" shape="1, 40, 1, 1" size="80"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -4640,7 +4640,7 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -4654,12 +4654,12 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="283" name="onnx::Conv_857_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="47308" shape="240, 40, 1, 1" size="19200"/>
+			<data element_type="f16" offset="47324" shape="240, 40, 1, 1" size="19200"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>240</dim>
@@ -4702,7 +4702,7 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>240</dim>
@@ -4716,12 +4716,12 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="286" name="Reshape_2938_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="66508" shape="1, 240, 1, 1" size="480"/>
+			<data element_type="f16" offset="66524" shape="1, 240, 1, 1" size="480"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -4763,7 +4763,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -4777,7 +4777,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -4828,7 +4828,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -4838,7 +4838,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -4852,13 +4852,13 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -4866,12 +4866,12 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="295" name="Reshape_2977_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="66988" shape="240, 1, 1, 5, 5" size="12000"/>
+			<data element_type="f16" offset="67004" shape="240, 1, 1, 5, 5" size="12000"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>240</dim>
@@ -4916,7 +4916,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>240</dim>
@@ -4931,12 +4931,12 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="298" name="Reshape_3063_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="78988" shape="1, 240, 1, 1" size="480"/>
+			<data element_type="f16" offset="79004" shape="1, 240, 1, 1" size="480"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -4978,7 +4978,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -4992,7 +4992,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -5043,7 +5043,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -5053,7 +5053,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -5067,13 +5067,13 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -5081,12 +5081,12 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="307" name="Constant_3095" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_3095" version="0"/>
 			</rt_info>
@@ -5106,7 +5106,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>2</dim>
@@ -5122,7 +5122,7 @@
 			</output>
 		</layer>
 		<layer id="309" name="encoder.model.blocks.2.1.se.conv_reduce.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="79468" shape="64, 240, 1, 1" size="30720"/>
+			<data element_type="f16" offset="79484" shape="64, 240, 1, 1" size="30720"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>64</dim>
@@ -5184,7 +5184,7 @@
 			</output>
 		</layer>
 		<layer id="312" name="Reshape_3117_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="110188" shape="1, 64, 1, 1" size="128"/>
+			<data element_type="f16" offset="110204" shape="1, 64, 1, 1" size="128"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -5266,7 +5266,7 @@
 			</output>
 		</layer>
 		<layer id="316" name="encoder.model.blocks.2.1.se.conv_expand.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="110316" shape="240, 64, 1, 1" size="30720"/>
+			<data element_type="f16" offset="110332" shape="240, 64, 1, 1" size="30720"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>240</dim>
@@ -5328,7 +5328,7 @@
 			</output>
 		</layer>
 		<layer id="319" name="Reshape_3166_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="141036" shape="1, 240, 1, 1" size="480"/>
+			<data element_type="f16" offset="141052" shape="1, 240, 1, 1" size="480"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -5459,7 +5459,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -5473,12 +5473,12 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="328" name="onnx::Conv_863_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="141516" shape="40, 240, 1, 1" size="19200"/>
+			<data element_type="f16" offset="141532" shape="40, 240, 1, 1" size="19200"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>40</dim>
@@ -5521,7 +5521,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>40</dim>
@@ -5535,12 +5535,12 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="331" name="Reshape_3218_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="160716" shape="1, 40, 1, 1" size="80"/>
+			<data element_type="f16" offset="160732" shape="1, 40, 1, 1" size="80"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -5582,7 +5582,7 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -5596,7 +5596,7 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -5610,13 +5610,13 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -5624,12 +5624,12 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="335" name="onnx::Conv_866_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="160796" shape="240, 40, 1, 1" size="19200"/>
+			<data element_type="f16" offset="160812" shape="240, 40, 1, 1" size="19200"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>240</dim>
@@ -5672,7 +5672,7 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>240</dim>
@@ -5686,12 +5686,12 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="338" name="Reshape_3267_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="179996" shape="1, 240, 1, 1" size="480"/>
+			<data element_type="f16" offset="180012" shape="1, 240, 1, 1" size="480"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -5733,7 +5733,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -5747,7 +5747,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -5798,7 +5798,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -5808,7 +5808,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -5822,13 +5822,13 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -5836,12 +5836,12 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="347" name="Reshape_3306_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="180476" shape="240, 1, 1, 5, 5" size="12000"/>
+			<data element_type="f16" offset="180492" shape="240, 1, 1, 5, 5" size="12000"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>240</dim>
@@ -5886,7 +5886,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>240</dim>
@@ -5901,12 +5901,12 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="350" name="Reshape_3392_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="192476" shape="1, 240, 1, 1" size="480"/>
+			<data element_type="f16" offset="192492" shape="1, 240, 1, 1" size="480"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -5948,7 +5948,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -5962,7 +5962,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -6013,7 +6013,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -6023,7 +6023,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -6037,13 +6037,13 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -6051,12 +6051,12 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="359" name="Constant_3424" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_3424" version="0"/>
 			</rt_info>
@@ -6076,7 +6076,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>2</dim>
@@ -6092,7 +6092,7 @@
 			</output>
 		</layer>
 		<layer id="361" name="encoder.model.blocks.2.2.se.conv_reduce.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="192956" shape="64, 240, 1, 1" size="30720"/>
+			<data element_type="f16" offset="192972" shape="64, 240, 1, 1" size="30720"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>64</dim>
@@ -6154,7 +6154,7 @@
 			</output>
 		</layer>
 		<layer id="364" name="Reshape_3446_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="223676" shape="1, 64, 1, 1" size="128"/>
+			<data element_type="f16" offset="223692" shape="1, 64, 1, 1" size="128"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -6236,7 +6236,7 @@
 			</output>
 		</layer>
 		<layer id="368" name="encoder.model.blocks.2.2.se.conv_expand.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="223804" shape="240, 64, 1, 1" size="30720"/>
+			<data element_type="f16" offset="223820" shape="240, 64, 1, 1" size="30720"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>240</dim>
@@ -6298,7 +6298,7 @@
 			</output>
 		</layer>
 		<layer id="371" name="Reshape_3495_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="254524" shape="1, 240, 1, 1" size="480"/>
+			<data element_type="f16" offset="254540" shape="1, 240, 1, 1" size="480"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -6429,7 +6429,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -6443,12 +6443,12 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="380" name="onnx::Conv_872_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="255004" shape="40, 240, 1, 1" size="19200"/>
+			<data element_type="f16" offset="255020" shape="40, 240, 1, 1" size="19200"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>40</dim>
@@ -6491,7 +6491,7 @@
 					<dim>1</dim>
 					<dim>240</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>40</dim>
@@ -6505,12 +6505,12 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="383" name="Reshape_3547_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="274204" shape="1, 40, 1, 1" size="80"/>
+			<data element_type="f16" offset="274220" shape="1, 40, 1, 1" size="80"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -6552,7 +6552,7 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -6566,7 +6566,7 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -6580,13 +6580,13 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -6594,12 +6594,12 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="387" name="onnx::Conv_875_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="274284" shape="120, 40, 1, 1" size="9600"/>
+			<data element_type="f16" offset="274300" shape="120, 40, 1, 1" size="9600"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>120</dim>
@@ -6642,7 +6642,7 @@
 					<dim>1</dim>
 					<dim>40</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>120</dim>
@@ -6656,12 +6656,12 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="390" name="Reshape_3596_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="283884" shape="1, 120, 1, 1" size="240"/>
+			<data element_type="f16" offset="283900" shape="1, 120, 1, 1" size="240"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -6703,7 +6703,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -6717,7 +6717,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -6768,7 +6768,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -6778,7 +6778,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -6792,13 +6792,13 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -6806,12 +6806,12 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="399" name="Reshape_3635_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="284124" shape="120, 1, 1, 5, 5" size="6000"/>
+			<data element_type="f16" offset="284140" shape="120, 1, 1, 5, 5" size="6000"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>120</dim>
@@ -6856,7 +6856,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>120</dim>
@@ -6871,12 +6871,12 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="402" name="Reshape_3721_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="290124" shape="1, 120, 1, 1" size="240"/>
+			<data element_type="f16" offset="290140" shape="1, 120, 1, 1" size="240"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -6918,7 +6918,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -6932,7 +6932,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -6983,7 +6983,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -6993,7 +6993,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -7007,13 +7007,13 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -7021,12 +7021,12 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="411" name="Constant_3753" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_3753" version="0"/>
 			</rt_info>
@@ -7046,7 +7046,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>2</dim>
@@ -7062,7 +7062,7 @@
 			</output>
 		</layer>
 		<layer id="413" name="encoder.model.blocks.3.0.se.conv_reduce.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="290364" shape="32, 120, 1, 1" size="7680"/>
+			<data element_type="f16" offset="290380" shape="32, 120, 1, 1" size="7680"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>32</dim>
@@ -7124,7 +7124,7 @@
 			</output>
 		</layer>
 		<layer id="416" name="Reshape_3775_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="298044" shape="1, 32, 1, 1" size="64"/>
+			<data element_type="f16" offset="298060" shape="1, 32, 1, 1" size="64"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -7206,7 +7206,7 @@
 			</output>
 		</layer>
 		<layer id="420" name="encoder.model.blocks.3.0.se.conv_expand.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="298108" shape="120, 32, 1, 1" size="7680"/>
+			<data element_type="f16" offset="298124" shape="120, 32, 1, 1" size="7680"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>120</dim>
@@ -7268,7 +7268,7 @@
 			</output>
 		</layer>
 		<layer id="423" name="Reshape_3824_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="305788" shape="1, 120, 1, 1" size="240"/>
+			<data element_type="f16" offset="305804" shape="1, 120, 1, 1" size="240"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -7399,7 +7399,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -7413,12 +7413,12 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="432" name="onnx::Conv_881_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="306028" shape="48, 120, 1, 1" size="11520"/>
+			<data element_type="f16" offset="306044" shape="48, 120, 1, 1" size="11520"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>48</dim>
@@ -7461,7 +7461,7 @@
 					<dim>1</dim>
 					<dim>120</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>48</dim>
@@ -7475,12 +7475,12 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="435" name="Reshape_3876_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="317548" shape="1, 48, 1, 1" size="96"/>
+			<data element_type="f16" offset="317564" shape="1, 48, 1, 1" size="96"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -7522,7 +7522,7 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -7536,12 +7536,12 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="438" name="onnx::Conv_884_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="317644" shape="144, 48, 1, 1" size="13824"/>
+			<data element_type="f16" offset="317660" shape="144, 48, 1, 1" size="13824"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>144</dim>
@@ -7584,7 +7584,7 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>144</dim>
@@ -7598,12 +7598,12 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="441" name="Reshape_3924_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="331468" shape="1, 144, 1, 1" size="288"/>
+			<data element_type="f16" offset="331484" shape="1, 144, 1, 1" size="288"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -7645,7 +7645,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -7659,7 +7659,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -7710,7 +7710,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -7720,7 +7720,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -7734,13 +7734,13 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -7748,12 +7748,12 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="450" name="Reshape_3963_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="331756" shape="144, 1, 1, 5, 5" size="7200"/>
+			<data element_type="f16" offset="331772" shape="144, 1, 1, 5, 5" size="7200"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>144</dim>
@@ -7798,7 +7798,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>144</dim>
@@ -7813,12 +7813,12 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="453" name="Reshape_4049_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="338956" shape="1, 144, 1, 1" size="288"/>
+			<data element_type="f16" offset="338972" shape="1, 144, 1, 1" size="288"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -7860,7 +7860,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -7874,7 +7874,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -7925,7 +7925,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -7935,7 +7935,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -7949,13 +7949,13 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -7963,12 +7963,12 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="462" name="Constant_4081" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_4081" version="0"/>
 			</rt_info>
@@ -7988,7 +7988,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>2</dim>
@@ -8004,7 +8004,7 @@
 			</output>
 		</layer>
 		<layer id="464" name="encoder.model.blocks.3.1.se.conv_reduce.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="339244" shape="40, 144, 1, 1" size="11520"/>
+			<data element_type="f16" offset="339260" shape="40, 144, 1, 1" size="11520"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>40</dim>
@@ -8066,7 +8066,7 @@
 			</output>
 		</layer>
 		<layer id="467" name="Reshape_4103_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="350764" shape="1, 40, 1, 1" size="80"/>
+			<data element_type="f16" offset="350780" shape="1, 40, 1, 1" size="80"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -8148,7 +8148,7 @@
 			</output>
 		</layer>
 		<layer id="471" name="encoder.model.blocks.3.1.se.conv_expand.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="350844" shape="144, 40, 1, 1" size="11520"/>
+			<data element_type="f16" offset="350860" shape="144, 40, 1, 1" size="11520"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>144</dim>
@@ -8210,7 +8210,7 @@
 			</output>
 		</layer>
 		<layer id="474" name="Reshape_4152_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="362364" shape="1, 144, 1, 1" size="288"/>
+			<data element_type="f16" offset="362380" shape="1, 144, 1, 1" size="288"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -8341,7 +8341,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -8355,12 +8355,12 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="483" name="onnx::Conv_890_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="362652" shape="48, 144, 1, 1" size="13824"/>
+			<data element_type="f16" offset="362668" shape="48, 144, 1, 1" size="13824"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>48</dim>
@@ -8403,7 +8403,7 @@
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>48</dim>
@@ -8417,12 +8417,12 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="486" name="Reshape_4204_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="376476" shape="1, 48, 1, 1" size="96"/>
+			<data element_type="f16" offset="376492" shape="1, 48, 1, 1" size="96"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -8464,7 +8464,7 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -8478,7 +8478,7 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -8492,13 +8492,13 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -8506,12 +8506,12 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="490" name="onnx::Conv_893_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="376572" shape="288, 48, 1, 1" size="27648"/>
+			<data element_type="f16" offset="376588" shape="288, 48, 1, 1" size="27648"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>288</dim>
@@ -8554,7 +8554,7 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>288</dim>
@@ -8568,12 +8568,12 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="493" name="Reshape_4253_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="404220" shape="1, 288, 1, 1" size="576"/>
+			<data element_type="f16" offset="404236" shape="1, 288, 1, 1" size="576"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -8615,7 +8615,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -8629,7 +8629,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -8680,7 +8680,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -8690,7 +8690,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -8704,13 +8704,13 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -8718,12 +8718,12 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="502" name="onnx::Sub_649" type="Const" version="opset1">
-			<data element_type="i64" offset="404796" shape="" size="8"/>
+			<data element_type="i64" offset="404812" shape="" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Sub_649" version="0"/>
 			</rt_info>
@@ -8741,7 +8741,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -8909,7 +8909,7 @@
 			</output>
 		</layer>
 		<layer id="517" name="onnx::Sub_647" type="Const" version="opset1">
-			<data element_type="i64" offset="404796" shape="" size="8"/>
+			<data element_type="i64" offset="404820" shape="" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Sub_647" version="0"/>
 			</rt_info>
@@ -9101,7 +9101,7 @@
 			</output>
 		</layer>
 		<layer id="532" name="onnx::Concat_687" type="Const" version="opset1">
-			<data element_type="i64" offset="938" shape="4" size="32"/>
+			<data element_type="i64" offset="946" shape="4" size="32"/>
 			<output>
 				<port id="0" names="onnx::Concat_687" precision="I64">
 					<dim>4</dim>
@@ -9128,7 +9128,7 @@
 			</output>
 		</layer>
 		<layer id="534" name="onnx::Reshape_689" type="Const" version="opset1">
-			<data element_type="i64" offset="970" shape="2" size="16"/>
+			<data element_type="i64" offset="978" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Reshape_689" version="0"/>
 			</rt_info>
@@ -9159,7 +9159,7 @@
 			</output>
 		</layer>
 		<layer id="536" name="onnx::Slice_692" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_691, onnx::Slice_692, onnx::Slice_693, onnx::Slice_694, onnx::Transpose_695" version="0"/>
 			</rt_info>
@@ -9170,7 +9170,7 @@
 			</output>
 		</layer>
 		<layer id="537" name="onnx::Slice_693" type="Const" version="opset1">
-			<data element_type="i64" offset="994" shape="1" size="8"/>
+			<data element_type="i64" offset="1002" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_691, onnx::Slice_692, onnx::Slice_693, onnx::Slice_694, onnx::Transpose_695" version="0"/>
 			</rt_info>
@@ -9181,7 +9181,7 @@
 			</output>
 		</layer>
 		<layer id="538" name="onnx::Slice_694" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Slice_691, onnx::Slice_692, onnx::Slice_693, onnx::Slice_694, onnx::Transpose_695" version="0"/>
 			</rt_info>
@@ -9219,7 +9219,7 @@
 			</output>
 		</layer>
 		<layer id="540" name="Constant_4384" type="Const" version="opset1">
-			<data element_type="i64" offset="1002" shape="2" size="16"/>
+			<data element_type="i64" offset="1010" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_4384" version="0"/>
 			</rt_info>
@@ -9250,7 +9250,7 @@
 			</output>
 		</layer>
 		<layer id="542" name="onnx::Reshape_697" type="Const" version="opset1">
-			<data element_type="i64" offset="986" shape="1" size="8"/>
+			<data element_type="i64" offset="994" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Reshape_697" version="0"/>
 			</rt_info>
@@ -9310,7 +9310,7 @@
 			</output>
 		</layer>
 		<layer id="546" name="onnx::Pad_700_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1018" shape="" size="2"/>
+			<data element_type="f16" offset="1026" shape="" size="2"/>
 			<output>
 				<port id="0" precision="FP16"/>
 			</output>
@@ -9338,7 +9338,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>4</dim>
@@ -9353,12 +9353,12 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>40</dim>
-					<dim>40</dim>
+					<dim>72</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="549" name="Reshape_4785_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="404804" shape="288, 1, 1, 5, 5" size="14400"/>
+			<data element_type="f16" offset="404828" shape="288, 1, 1, 5, 5" size="14400"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>288</dim>
@@ -9403,7 +9403,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>40</dim>
-					<dim>40</dim>
+					<dim>72</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>288</dim>
@@ -9418,12 +9418,12 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="552" name="Reshape_4871_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="419204" shape="1, 288, 1, 1" size="576"/>
+			<data element_type="f16" offset="419228" shape="1, 288, 1, 1" size="576"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -9465,7 +9465,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -9479,7 +9479,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -9530,7 +9530,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -9540,7 +9540,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -9554,13 +9554,13 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -9568,12 +9568,12 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="561" name="Constant_4903" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_4903" version="0"/>
 			</rt_info>
@@ -9593,7 +9593,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>2</dim>
@@ -9609,7 +9609,7 @@
 			</output>
 		</layer>
 		<layer id="563" name="encoder.model.blocks.4.0.se.conv_reduce.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="419780" shape="72, 288, 1, 1" size="41472"/>
+			<data element_type="f16" offset="419804" shape="72, 288, 1, 1" size="41472"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>72</dim>
@@ -9671,7 +9671,7 @@
 			</output>
 		</layer>
 		<layer id="566" name="Reshape_4925_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="461252" shape="1, 72, 1, 1" size="144"/>
+			<data element_type="f16" offset="461276" shape="1, 72, 1, 1" size="144"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -9753,7 +9753,7 @@
 			</output>
 		</layer>
 		<layer id="570" name="encoder.model.blocks.4.0.se.conv_expand.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="461396" shape="288, 72, 1, 1" size="41472"/>
+			<data element_type="f16" offset="461420" shape="288, 72, 1, 1" size="41472"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>288</dim>
@@ -9815,7 +9815,7 @@
 			</output>
 		</layer>
 		<layer id="573" name="Reshape_4974_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="502868" shape="1, 288, 1, 1" size="576"/>
+			<data element_type="f16" offset="502892" shape="1, 288, 1, 1" size="576"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -9946,7 +9946,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -9960,12 +9960,12 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="582" name="onnx::Conv_899_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="503444" shape="96, 288, 1, 1" size="55296"/>
+			<data element_type="f16" offset="503468" shape="96, 288, 1, 1" size="55296"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>96</dim>
@@ -10008,7 +10008,7 @@
 					<dim>1</dim>
 					<dim>288</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>96</dim>
@@ -10022,12 +10022,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="585" name="Reshape_5026_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="558740" shape="1, 96, 1, 1" size="192"/>
+			<data element_type="f16" offset="558764" shape="1, 96, 1, 1" size="192"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -10069,7 +10069,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -10083,12 +10083,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="588" name="onnx::Conv_902_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="558932" shape="576, 96, 1, 1" size="110592"/>
+			<data element_type="f16" offset="558956" shape="576, 96, 1, 1" size="110592"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>576</dim>
@@ -10131,7 +10131,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>576</dim>
@@ -10145,12 +10145,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="591" name="Reshape_5074_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="669524" shape="1, 576, 1, 1" size="1152"/>
+			<data element_type="f16" offset="669548" shape="1, 576, 1, 1" size="1152"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -10192,7 +10192,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -10206,7 +10206,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -10257,7 +10257,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -10267,7 +10267,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -10281,13 +10281,13 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -10295,12 +10295,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="600" name="Reshape_5113_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="670676" shape="576, 1, 1, 5, 5" size="28800"/>
+			<data element_type="f16" offset="670700" shape="576, 1, 1, 5, 5" size="28800"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>576</dim>
@@ -10345,7 +10345,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>576</dim>
@@ -10360,12 +10360,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="603" name="Reshape_5199_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="699476" shape="1, 576, 1, 1" size="1152"/>
+			<data element_type="f16" offset="699500" shape="1, 576, 1, 1" size="1152"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -10407,7 +10407,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -10421,7 +10421,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -10472,7 +10472,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -10482,7 +10482,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -10496,13 +10496,13 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -10510,12 +10510,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="612" name="Constant_5231" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_5231" version="0"/>
 			</rt_info>
@@ -10535,7 +10535,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>2</dim>
@@ -10551,7 +10551,7 @@
 			</output>
 		</layer>
 		<layer id="614" name="encoder.model.blocks.4.1.se.conv_reduce.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="700628" shape="144, 576, 1, 1" size="165888"/>
+			<data element_type="f16" offset="700652" shape="144, 576, 1, 1" size="165888"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>144</dim>
@@ -10613,7 +10613,7 @@
 			</output>
 		</layer>
 		<layer id="617" name="Reshape_5253_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="866516" shape="1, 144, 1, 1" size="288"/>
+			<data element_type="f16" offset="866540" shape="1, 144, 1, 1" size="288"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -10695,7 +10695,7 @@
 			</output>
 		</layer>
 		<layer id="621" name="encoder.model.blocks.4.1.se.conv_expand.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="866804" shape="576, 144, 1, 1" size="165888"/>
+			<data element_type="f16" offset="866828" shape="576, 144, 1, 1" size="165888"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>576</dim>
@@ -10757,7 +10757,7 @@
 			</output>
 		</layer>
 		<layer id="624" name="Reshape_5302_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1032692" shape="1, 576, 1, 1" size="1152"/>
+			<data element_type="f16" offset="1032716" shape="1, 576, 1, 1" size="1152"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -10888,7 +10888,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -10902,12 +10902,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="633" name="onnx::Conv_908_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1033844" shape="96, 576, 1, 1" size="110592"/>
+			<data element_type="f16" offset="1033868" shape="96, 576, 1, 1" size="110592"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>96</dim>
@@ -10950,7 +10950,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>96</dim>
@@ -10964,12 +10964,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="636" name="Reshape_5354_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1144436" shape="1, 96, 1, 1" size="192"/>
+			<data element_type="f16" offset="1144460" shape="1, 96, 1, 1" size="192"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -11011,7 +11011,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -11025,7 +11025,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -11039,13 +11039,13 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -11053,12 +11053,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="640" name="onnx::Conv_911_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1144628" shape="576, 96, 1, 1" size="110592"/>
+			<data element_type="f16" offset="1144652" shape="576, 96, 1, 1" size="110592"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>576</dim>
@@ -11101,7 +11101,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>576</dim>
@@ -11115,12 +11115,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="643" name="Reshape_5403_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1255220" shape="1, 576, 1, 1" size="1152"/>
+			<data element_type="f16" offset="1255244" shape="1, 576, 1, 1" size="1152"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -11162,7 +11162,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -11176,7 +11176,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -11227,7 +11227,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -11237,7 +11237,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -11251,13 +11251,13 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -11265,12 +11265,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="652" name="Reshape_5442_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1256372" shape="576, 1, 1, 5, 5" size="28800"/>
+			<data element_type="f16" offset="1256396" shape="576, 1, 1, 5, 5" size="28800"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>576</dim>
@@ -11315,7 +11315,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>576</dim>
@@ -11330,12 +11330,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="655" name="Reshape_5528_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1285172" shape="1, 576, 1, 1" size="1152"/>
+			<data element_type="f16" offset="1285196" shape="1, 576, 1, 1" size="1152"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -11377,7 +11377,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -11391,7 +11391,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -11442,7 +11442,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -11452,7 +11452,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -11466,13 +11466,13 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -11480,12 +11480,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="664" name="Constant_5560" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_5560" version="0"/>
 			</rt_info>
@@ -11505,7 +11505,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>2</dim>
@@ -11521,7 +11521,7 @@
 			</output>
 		</layer>
 		<layer id="666" name="encoder.model.blocks.4.2.se.conv_reduce.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1286324" shape="144, 576, 1, 1" size="165888"/>
+			<data element_type="f16" offset="1286348" shape="144, 576, 1, 1" size="165888"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>144</dim>
@@ -11583,7 +11583,7 @@
 			</output>
 		</layer>
 		<layer id="669" name="Reshape_5582_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1452212" shape="1, 144, 1, 1" size="288"/>
+			<data element_type="f16" offset="1452236" shape="1, 144, 1, 1" size="288"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -11665,7 +11665,7 @@
 			</output>
 		</layer>
 		<layer id="673" name="encoder.model.blocks.4.2.se.conv_expand.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1452500" shape="576, 144, 1, 1" size="165888"/>
+			<data element_type="f16" offset="1452524" shape="576, 144, 1, 1" size="165888"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>576</dim>
@@ -11727,7 +11727,7 @@
 			</output>
 		</layer>
 		<layer id="676" name="Reshape_5631_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1618388" shape="1, 576, 1, 1" size="1152"/>
+			<data element_type="f16" offset="1618412" shape="1, 576, 1, 1" size="1152"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -11858,7 +11858,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -11872,12 +11872,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="685" name="onnx::Conv_917_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1619540" shape="96, 576, 1, 1" size="110592"/>
+			<data element_type="f16" offset="1619564" shape="96, 576, 1, 1" size="110592"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>96</dim>
@@ -11920,7 +11920,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>96</dim>
@@ -11934,12 +11934,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="688" name="Reshape_5683_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1730132" shape="1, 96, 1, 1" size="192"/>
+			<data element_type="f16" offset="1730156" shape="1, 96, 1, 1" size="192"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -11981,7 +11981,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -11995,7 +11995,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -12009,13 +12009,13 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -12023,12 +12023,12 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="692" name="onnx::Conv_920_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1730324" shape="576, 96, 1, 1" size="110592"/>
+			<data element_type="f16" offset="1730348" shape="576, 96, 1, 1" size="110592"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>576</dim>
@@ -12071,7 +12071,7 @@
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>576</dim>
@@ -12085,12 +12085,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="695" name="Reshape_5732_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1840916" shape="1, 576, 1, 1" size="1152"/>
+			<data element_type="f16" offset="1840940" shape="1, 576, 1, 1" size="1152"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -12132,7 +12132,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -12146,7 +12146,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -12197,7 +12197,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32"/>
 				<port id="2" precision="FP32"/>
@@ -12207,7 +12207,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -12221,13 +12221,13 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -12235,12 +12235,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="704" name="onnx::Conv_923_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="1842068" shape="256, 576, 1, 1" size="294912"/>
+			<data element_type="f16" offset="1842092" shape="256, 576, 1, 1" size="294912"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>256</dim>
@@ -12283,7 +12283,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>256</dim>
@@ -12297,12 +12297,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="707" name="Reshape_5784_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2136980" shape="1, 256, 1, 1" size="512"/>
+			<data element_type="f16" offset="2137004" shape="1, 256, 1, 1" size="512"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -12344,7 +12344,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -12358,7 +12358,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -12371,7 +12371,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -12379,12 +12379,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="711" name="Reshape_5821_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2137492" shape="576, 1, 1, 3, 3" size="10368"/>
+			<data element_type="f16" offset="2137516" shape="576, 1, 1, 3, 3" size="10368"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>576</dim>
@@ -12429,7 +12429,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>576</dim>
@@ -12444,12 +12444,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="714" name="onnx::Conv_926_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2147860" shape="256, 576, 1, 1" size="294912"/>
+			<data element_type="f16" offset="2147884" shape="256, 576, 1, 1" size="294912"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>256</dim>
@@ -12492,7 +12492,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>256</dim>
@@ -12506,12 +12506,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="717" name="Reshape_5908_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2442772" shape="1, 256, 1, 1" size="512"/>
+			<data element_type="f16" offset="2442796" shape="1, 256, 1, 1" size="512"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -12553,7 +12553,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -12567,7 +12567,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -12580,7 +12580,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -12588,12 +12588,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="721" name="Reshape_5945_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2443284" shape="576, 1, 1, 3, 3" size="10368"/>
+			<data element_type="f16" offset="2443308" shape="576, 1, 1, 3, 3" size="10368"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>576</dim>
@@ -12638,7 +12638,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>576</dim>
@@ -12653,12 +12653,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="724" name="onnx::Conv_929_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2453652" shape="256, 576, 1, 1" size="294912"/>
+			<data element_type="f16" offset="2453676" shape="256, 576, 1, 1" size="294912"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>256</dim>
@@ -12701,7 +12701,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>256</dim>
@@ -12715,12 +12715,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="727" name="Reshape_6032_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2748564" shape="1, 256, 1, 1" size="512"/>
+			<data element_type="f16" offset="2748588" shape="1, 256, 1, 1" size="512"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -12762,7 +12762,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -12776,7 +12776,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -12789,7 +12789,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -12797,12 +12797,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="731" name="Reshape_6069_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2749076" shape="576, 1, 1, 3, 3" size="10368"/>
+			<data element_type="f16" offset="2749100" shape="576, 1, 1, 3, 3" size="10368"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>576</dim>
@@ -12847,7 +12847,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>576</dim>
@@ -12862,12 +12862,12 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="734" name="onnx::Conv_932_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="2759444" shape="256, 576, 1, 1" size="294912"/>
+			<data element_type="f16" offset="2759468" shape="256, 576, 1, 1" size="294912"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>256</dim>
@@ -12910,7 +12910,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>256</dim>
@@ -12924,12 +12924,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="737" name="Reshape_6156_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="3054356" shape="1, 256, 1, 1" size="512"/>
+			<data element_type="f16" offset="3054380" shape="1, 256, 1, 1" size="512"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -12971,7 +12971,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -12985,7 +12985,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -12998,7 +12998,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -13006,12 +13006,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="741" name="Range_6200" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<output>
 				<port id="0" precision="I64">
 					<dim>2</dim>
@@ -13028,7 +13028,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>2</dim>
@@ -13044,7 +13044,7 @@
 			</output>
 		</layer>
 		<layer id="743" name="onnx::Conv_935_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="3054868" shape="256, 576, 1, 1" size="294912"/>
+			<data element_type="f16" offset="3054892" shape="256, 576, 1, 1" size="294912"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>256</dim>
@@ -13106,7 +13106,7 @@
 			</output>
 		</layer>
 		<layer id="746" name="Reshape_6245_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="3349780" shape="1, 256, 1, 1" size="512"/>
+			<data element_type="f16" offset="3349804" shape="1, 256, 1, 1" size="512"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -13229,7 +13229,7 @@
 			</output>
 		</layer>
 		<layer id="753" name="Broadcast_6285" type="Const" version="opset1">
-			<data element_type="i64" offset="3350292" shape="1" size="8"/>
+			<data element_type="i64" offset="3350316" shape="1" size="8"/>
 			<rt_info>
 				<attribute name="fused_names" value="Broadcast_6285, ShapeOf_6284, onnx::Concat_784, onnx::Slice_781, onnx::Slice_782, onnx::Slice_783" version="0"/>
 			</rt_info>
@@ -13274,7 +13274,7 @@
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -13284,7 +13284,7 @@
 			</output>
 		</layer>
 		<layer id="756" name="Constant_53524" type="Const" version="opset1">
-			<data element_type="i64" offset="1340" shape="2" size="16"/>
+			<data element_type="i64" offset="1348" shape="2" size="16"/>
 			<rt_info>
 				<attribute name="fused_names" value="onnx::Cast_779" version="0"/>
 			</rt_info>
@@ -13391,7 +13391,7 @@
 			</output>
 		</layer>
 		<layer id="763" name="Constant_93371" type="Const" version="opset1">
-			<data element_type="f32" offset="3350300" shape="1" size="4"/>
+			<data element_type="f32" offset="3350324" shape="1" size="4"/>
 			<output>
 				<port id="0" precision="FP32">
 					<dim>1</dim>
@@ -13441,7 +13441,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -13455,31 +13455,31 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="2" precision="FP32">
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="3" precision="FP32">
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="4" precision="FP32">
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -13487,12 +13487,12 @@
 					<dim>1</dim>
 					<dim>1280</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="767" name="onnx::Conv_938_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="3350304" shape="256, 1280, 1, 1" size="655360"/>
+			<data element_type="f16" offset="3350328" shape="256, 1280, 1, 1" size="655360"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>256</dim>
@@ -13535,7 +13535,7 @@
 					<dim>1</dim>
 					<dim>1280</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>256</dim>
@@ -13549,12 +13549,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="770" name="Reshape_6411_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4005664" shape="1, 256, 1, 1" size="512"/>
+			<data element_type="f16" offset="4005688" shape="1, 256, 1, 1" size="512"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -13596,7 +13596,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -13610,7 +13610,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -13623,7 +13623,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -13631,12 +13631,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="774" name="Reshape_6448_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4006176" shape="256, 1, 1, 3, 3" size="4608"/>
+			<data element_type="f16" offset="4006200" shape="256, 1, 1, 3, 3" size="4608"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>256</dim>
@@ -13681,7 +13681,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>256</dim>
@@ -13696,12 +13696,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="777" name="onnx::Conv_941_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4010784" shape="256, 256, 1, 1" size="131072"/>
+			<data element_type="f16" offset="4010808" shape="256, 256, 1, 1" size="131072"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>256</dim>
@@ -13744,7 +13744,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>256</dim>
@@ -13758,12 +13758,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="780" name="Reshape_6535_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4141856" shape="1, 256, 1, 1" size="512"/>
+			<data element_type="f16" offset="4141880" shape="1, 256, 1, 1" size="512"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -13805,7 +13805,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -13819,7 +13819,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -13832,7 +13832,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -13840,7 +13840,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</output>
 		</layer>
@@ -13854,7 +13854,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 			</input>
 			<output>
@@ -13880,7 +13880,7 @@
 			</output>
 		</layer>
 		<layer id="786" name="onnx::Resize_800" type="Const" version="opset1">
-			<data element_type="f32" offset="4142368" shape="4" size="16"/>
+			<data element_type="f32" offset="4142392" shape="4" size="16"/>
 			<output>
 				<port id="0" names="onnx::Resize_800" precision="FP32">
 					<dim>4</dim>
@@ -13932,7 +13932,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>32</dim>
-					<dim>32</dim>
+					<dim>64</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>4</dim>
@@ -13946,12 +13946,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="790" name="onnx::Conv_944_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4142384" shape="48, 16, 1, 1" size="1536"/>
+			<data element_type="f16" offset="4142408" shape="48, 16, 1, 1" size="1536"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>48</dim>
@@ -13994,7 +13994,7 @@
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>48</dim>
@@ -14008,12 +14008,12 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="793" name="Reshape_6604_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4143920" shape="1, 48, 1, 1" size="96"/>
+			<data element_type="f16" offset="4143944" shape="1, 48, 1, 1" size="96"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -14055,7 +14055,7 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -14069,7 +14069,7 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
@@ -14082,7 +14082,7 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</input>
 			<output>
@@ -14090,7 +14090,7 @@
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
@@ -14104,13 +14104,13 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
 					<dim>48</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</input>
 			<output>
@@ -14118,12 +14118,12 @@
 					<dim>1</dim>
 					<dim>304</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="798" name="Reshape_6642_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4144016" shape="304, 1, 1, 3, 3" size="5472"/>
+			<data element_type="f16" offset="4144040" shape="304, 1, 1, 3, 3" size="5472"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>304</dim>
@@ -14168,7 +14168,7 @@
 					<dim>1</dim>
 					<dim>304</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>304</dim>
@@ -14183,12 +14183,12 @@
 					<dim>1</dim>
 					<dim>304</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="801" name="onnx::Conv_947_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4149488" shape="256, 304, 1, 1" size="155648"/>
+			<data element_type="f16" offset="4149512" shape="256, 304, 1, 1" size="155648"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>256</dim>
@@ -14231,7 +14231,7 @@
 					<dim>1</dim>
 					<dim>304</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>256</dim>
@@ -14245,12 +14245,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="804" name="Reshape_6729_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4305136" shape="1, 256, 1, 1" size="512"/>
+			<data element_type="f16" offset="4305160" shape="1, 256, 1, 1" size="512"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -14292,7 +14292,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -14306,7 +14306,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
@@ -14319,7 +14319,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</input>
 			<output>
@@ -14327,12 +14327,12 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="808" name="segmentation_head.0.weight_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4305648" shape="3, 256, 1, 1" size="1536"/>
+			<data element_type="f16" offset="4305672" shape="3, 256, 1, 1" size="1536"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>3</dim>
@@ -14375,7 +14375,7 @@
 					<dim>1</dim>
 					<dim>256</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>3</dim>
@@ -14389,12 +14389,12 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="811" name="Reshape_6778_compressed" type="Const" version="opset1">
-			<data element_type="f16" offset="4307184" shape="1, 3, 1, 1" size="6"/>
+			<data element_type="f16" offset="4307208" shape="1, 3, 1, 1" size="6"/>
 			<output>
 				<port id="0" precision="FP16">
 					<dim>1</dim>
@@ -14436,7 +14436,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="FP32">
 					<dim>1</dim>
@@ -14450,7 +14450,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</output>
 		</layer>
@@ -14464,7 +14464,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 			</input>
 			<output>
@@ -14490,7 +14490,7 @@
 			</output>
 		</layer>
 		<layer id="816" name="onnx::Resize_814" type="Const" version="opset1">
-			<data element_type="f32" offset="4142368" shape="4" size="16"/>
+			<data element_type="f32" offset="4142392" shape="4" size="16"/>
 			<output>
 				<port id="0" names="onnx::Resize_814" precision="FP32">
 					<dim>4</dim>
@@ -14542,7 +14542,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>128</dim>
-					<dim>128</dim>
+					<dim>256</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>4</dim>
@@ -14556,12 +14556,12 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>512</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="820" name="Constant_6826" type="Const" version="opset1">
-			<data element_type="i64" offset="4307190" shape="4" size="32"/>
+			<data element_type="i64" offset="4307214" shape="4" size="32"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_6826" version="0"/>
 			</rt_info>
@@ -14580,7 +14580,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>512</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 				<port id="1" precision="I64">
 					<dim>4</dim>
@@ -14589,7 +14589,7 @@
 			<output>
 				<port id="2" names="onnx::Softmax_817" precision="FP32">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 					<dim>512</dim>
 					<dim>3</dim>
 				</port>
@@ -14603,7 +14603,7 @@
 			<input>
 				<port id="0" precision="FP32">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 					<dim>512</dim>
 					<dim>3</dim>
 				</port>
@@ -14611,14 +14611,14 @@
 			<output>
 				<port id="1" names="onnx::Transpose_818" precision="FP32">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 					<dim>512</dim>
 					<dim>3</dim>
 				</port>
 			</output>
 		</layer>
 		<layer id="823" name="Constant_6829" type="Const" version="opset1">
-			<data element_type="i64" offset="4307190" shape="4" size="32"/>
+			<data element_type="i64" offset="4307214" shape="4" size="32"/>
 			<rt_info>
 				<attribute name="fused_names" value="Constant_6829" version="0"/>
 			</rt_info>
@@ -14635,7 +14635,7 @@
 			<input>
 				<port id="0" precision="FP32">
 					<dim>1</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 					<dim>512</dim>
 					<dim>3</dim>
 				</port>
@@ -14648,7 +14648,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>512</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 			</output>
 		</layer>
@@ -14661,7 +14661,7 @@
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>512</dim>
-					<dim>512</dim>
+					<dim>1024</dim>
 				</port>
 			</input>
 		</layer>
@@ -15587,7 +15587,7 @@
 			<freeze_placeholder_with_value value="{}"/>
 			<input_model value="DIR/lane_model.onnx"/>
 			<input_model_is_text value="False"/>
-			<input_shape value="[1,3,512,512]"/>
+			<input_shape value="[1,3,512,1024]"/>
 			<k value="DIR/CustomLayersMapping.xml"/>
 			<layout value="()"/>
 			<layout_values value="{}"/>
@@ -15598,7 +15598,7 @@
 			<model_name value="lane_model"/>
 			<output_dir value="DIR"/>
 			<placeholder_data_types value="{}"/>
-			<placeholder_shapes value="(1, 3, 512, 512)"/>
+			<placeholder_shapes value="(1, 3, 512, 1024)"/>
 			<progress value="False"/>
 			<remove_memory value="False"/>
 			<remove_output_softmax value="False"/>
